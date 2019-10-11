@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1 - Course Template</title>
+        <title>Benvenuti - Course Template</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -78,7 +78,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li><a href="index.html" class="active"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li><a href="01-html5/index.html"><strong aria-hidden="true">2.</strong> HTML5 Walkthrough</a></li><li><ol class="section"><li><a href="01-html5/02-css.html"><strong aria-hidden="true">2.1.</strong> CSS</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,77 +145,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <style>
-.centered {
-	text-align: center;
-}
-
-img {
-  width: 20%;
-}
-
-img.right_side {
-  float: right;
-  margin:5px 5px 0px 20px;
-  width: 30%;
-}
-img.left_side {
-  float:left;
-  margin:5px 20px 0px 5px;
-  width: 20%;
-}
-
-p.clear {
-  clear: both;  
-}
-p.img-container {
-  margin-bottom: 15px;
-}
-
-p.img-container::after {
-  margin-bottom: 15px;
-  overflow: hidden;
-  clear: both;
-}
-</style>
-<h1><a class="header" href="#css" id="css">CSS</a></h1>
-<p class="img-container">
-L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha creato delle difficoltà, ma con il passare del tempo si è rivelato un aspetto vincente.
-<img class="right_side" title="CSS logo" alt="CSS logo" src="assets/css-logo.png" width="15%">
-</p>
-<p>La definizione del CSS è un tipico esempio di quanto detto. Nei primi anni di diffusione (1993-1996) le diverse aziende concorrenti che hanno creato i primi browser (Netscape e Internet Explorer in particolare) crearono delle estensioni proprietarie dell'HTML con l'aggiunta di confusione e difficoltà per gli sviluppatori. Il w3c decise quindi di affrontare questo problema creando un gruppo di lavoro che produsse uno standard nel 1996 chiamato Cascading Style Sheet (CSS).</p>
-<p>Questa divisione si rivelò estremamente efficace per risolvere i problemi che si sono posti con il passare degli anni. In particolare, riuscì in modo eccellente a risolvere il problema della diversa dimensione degli schermi dei palmari prima e degli smartphone poi.</p>
-<p>Oggi CSS include moltissime funzionalità che permettono l'animazione degli elementi nelle pagine, le trasformazioni (es. rotazione, scalatura), i gradienti e molte altre cose.</p>
-<h1><a class="header" href="#concetti-base" id="concetti-base">Concetti base</a></h1>
-<h2><a class="header" href="#selettori" id="selettori">Selettori</a></h2>
-<p>Il CSS si basa su questi due passaggi:</p>
-<ol>
-<li>selezionare gli elementi a cui si vuole applicare un certo stile</li>
-<li>dichiarare le proprietà da applicare a quegli elementi.</li>
-</ol>
-<p class="centered">
-<img style="width:85%; margin:15px 0" title="CSS selector" alt="CSS selector" src="assets/css-selector.gif" >
-</p>
-<p>I selettori di base sono di 3 tipi:</p>
-<ul>
-<li>tag: non hanno nessun prefisso, selezionano tutti gli elementi con il tag selezionato. Ad esempio <code>div {background-color:red}</code> colora di rosso lo sfondo di tutti gli elementi con il tag div</li>
-<li>id: ha come prefisso <code>#</code> (cancelletto), seleziona l'elemento che ha come attributo id il valore specificato. Ad esempio <code>#my-title {font-weight:bold}</code> rende grassetto l'elemento che ha come attributo <code>id=&quot;my-title&quot;</code></li>
-<li>class: ha come prefisso <code>.</code> (punto), seleziona tutti gli elementi che hanno come attributo il valore specificato. Ad esempio <code>.small-images {width=5%}</code> imposta la larghezza di tutti gli elementi che hanno come attributo <code>class=&quot;small-images</code> al 5% della larghezza dello schermo.</li>
-</ul>
-<h2><a class="header" href="#box-model" id="box-model">Box model</a></h2>
-<p>Un altro concetto fondamentale del CSS è che la pagina è come se fosse uno scaffale, in cui ogni elemento è una scatola (<em>box</em>). La scatola è composta dalla confezione (<em>border</em>), al cui interno c'è un contenuto (<em>content</em>) protetto dall'imballaggio (<em>padding</em>). Le scatole sono distanziate l'una dall'altra da un margine di spazio (<em>margin</em>).</p>
-<p class="centered">
-<img style="width:85%; margin:15px 0" title="CSS box model" alt="CSS box model" src="assets/css-box-model.jpg" >
-</p>
-<p>Ricapitolando, la nomenclatura del box-model utilizzato da CSS è:</p>
-<ul>
-<li>box: ogni elemento della nostra pagina</li>
-<li>content: il contenuto vero e proprio, ad esempio il testo, l'immagine o altri elementi annidati</li>
-<li>padding: l'imballaggio, sta all'interno della nostra scatola, quindi coprirà anche l'eventuale colore o immagine di sfondo</li>
-<li>border: la confezione, ovvero il rettangolo che include padding e contenuto</li>
-<li>margin: il margine tra una scatola e l'altra</li>
-</ul>
-<p>Fate attenzione che i margini tra due elementi si sommano: quindi se un elemento ha margine destro pari a 10px, e il successivo ha margine sinistro pari a 15px, il margine totale sarà 25px.</p>
+                        <h1><a class="header" href="#sviluppo-html5" id="sviluppo-html5">Sviluppo HTML5</a></h1>
+<p><strong>A.S. 2019-2020</strong></p>
+<p><strong>Istituto di Istruzione Superiore G. Marconi</strong></p>
+<p><strong>Sistemi e reti</strong></p>
+<p>Benvenuti ragazzi!</p>
+<p>Questo materiale riepiloga quanto detto a lezione negli scorsi giorni.</p>
+<p>Le risposte alle domande dei compiti in classe sono tutte incluse in questo materiale.</p>
+<p>I riferimenti al libro di testo sono tra parentesi quadre, come ad esempio [pag. 1].</p>
+<blockquote>
+<p>Il testo in questi box sono per approfondimento. La lettura di questo materiale non è strettamente
+necessaria per le verifiche, ma è consigliata per vostra cultura personale e in quanto
+sapere indispensabile per chi vuole diventare un informatico.</p>
+</blockquote>
+<p>Buon studio e buon lavoro.</p>
 
                     </main>
 
@@ -223,6 +166,10 @@ L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha crea
                         <!-- Mobile navigation buttons -->
                         
 
+                        
+                            <a rel="next" href="01-html5/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -233,6 +180,10 @@ L'HTML è fin da subito nato come uno standard aperto: questo all'inizio ha crea
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
 
+                
+                    <a href="01-html5/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

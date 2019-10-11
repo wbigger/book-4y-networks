@@ -1,11 +1,11 @@
 # Sviluppo HTML5
 
 
-**A.S. 2018-2019**
+**A.S. 2019-2020**
 
 **Istituto di Istruzione Superiore G. Marconi**
 
-**TPSI**
+**Sistemi e reti**
 
 Benvenuti ragazzi!
 
