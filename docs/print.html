@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li><a href="01-html5/index.html"><strong aria-hidden="true">2.</strong> HTML5 Walkthrough</a></li><li><ol class="section"><li><a href="01-html5/02-css.html"><strong aria-hidden="true">2.1.</strong> CSS</a></li></ol></li></ol>
+                <ol class="chapter"><li><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li><a href="02-network/index.html"><strong aria-hidden="true">3.</strong> Network</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -161,8 +161,102 @@ necessaria per le verifiche, ma è consigliata per vostra cultura personale e in
 sapere indispensabile per chi vuole diventare un informatico.</p>
 </blockquote>
 <p>Buon studio e buon lavoro.</p>
-<h1><a class="header" href="#html5-walkthrough" id="html5-walkthrough">HTML5 Walkthrough</a></h1>
-<h1><a class="header" href="#css" id="css">CSS</a></h1>
+<style>
+.centered {
+	text-align: center;
+}
+
+img {
+  width: 20%;
+}
+
+img.right_side {
+  float: right;
+  margin:5px 5px 0px 20px;
+  width: 30%;
+}
+img.w10 {
+  width: 50%;
+}
+img.left_side {
+  float:left;
+  margin:5px 20px 0px 5px;
+  width: 20%;
+}
+
+p.clear {
+  clear: both;  
+}
+p.img-container {
+  margin-bottom: 15px;
+}
+
+p.img-container::after {
+  margin-bottom: 15px;
+  overflow: hidden;
+  clear: both;
+}
+</style>
+<h1><a class="header" href="#data-link-layer" id="data-link-layer">Data-link layer</a></h1>
+<p>Cominciamo le lezioni di quest'anno con un approfondimento sul livello 2 della pila ISO-OSI: il <em>data-link layer</em>.</p>
+<p>Come dice il nome, il livello data-link ci assicura che ci sia un collegamento (<em>link</em>) che permetta di scambiare dati tra più computer. Il suo funzionamento quindi prevederà il minimo necessario per far sì che questo avvenga.</p>
+<p>Per cominciare, ci dovrà essere un modo per distinguere le diverse macchine tra di loro. Come facciamo a dire che il destinatario del mio messaggio deve essere un esatto computer, e che il mittente sono proprio io? Per fare questo, il livello 2 data-link utilizza il concetto di <em>indirizzo MAC</em> (in inglese MAC address).</p>
+<blockquote>
+<p>MAC è l'acronimo di Media Access Control.</p>
+</blockquote>
+<p class="img-container">
+<img class="right_side w10" title="MAC address" alt="MAC address" src="01-switch/assets/mac.png">
+<p>Possiamo pensare al MAC come il codice fiscale della nostra interfaccia di rete, che è univoca in tutto il mondo. In altre parole, non possono esistere due interfacce di rete con lo stesso indirizzo MAC. È composto da 6 byte (48 bit), che convenzionalmente sono divisi tra loro da <code>:</code> (due punti). Un MAC address valido è, ad esempio, <code>01:02:03:ab:cd:ef</code>.</p>
+</p>
+<blockquote>
+<p>Secondo lo standard più diffuso attualmente, i primi 3 byte del MAC identificano la casa produttrice, e gli ultimi 3 l'interfaccia.</p>
+</blockquote>
+<blockquote>
+<p>Potreste trovare anche altri separatori tra i byte del MAC address, come ad esempio il punto o il trattino. Sono meno comuni e ne scoraggio l'uso.</p>
+</blockquote>
+<p>Sottolineo che parliamo di <em>interfacce di rete</em> e non di computer perché, molto spesso, un computer ha più di una interfaccia. Ad esempio uno smartphone ha l'interfaccia per la rete dati in 4G ed un'altra interfaccia per il WiFi. Ovviamente, le due interfacce avranno MAC address diversi.</p>
+<p>Immaginiamo quindi di dover connettere tre computer tra di loro. Per comodità, li connettiamo tutti ad uno switch, che ricordiamo essere un dispositivo di rete con tante <em>porte</em> a cui si possono collegare altrettante macchine. Lo switch, avrà quindi il compito di smistare i pacchetti al giusto destinatario.</p>
+<p class="centered">
+<img style="width:85%; margin:15px 0" title="switch-example" alt="switch-example" src="01-switch/assets/01-switch.jpeg" >
+</p>
+<p>Domanda: perché lo switch deve preoccuparsi di smistare il pacchetto solo al destinatario, e non inoltra tutto a tutti? Identifichiamo due problemi principali.</p>
+<ul>
+<li>sicurezza: non vogliamo che tutti i computer siano in grado di leggere i messaggi diretti ad altri</li>
+<li>traffico: vogliamo ridurre il traffico sui cavi il più possibile</li>
+</ul>
+<blockquote>
+<p>Fino a qualche anno fa esistevano dei dispositivi che inoltravano tutto a tutti, si chiamavano <em>hub</em>, ora non sono più usati.</p>
+</blockquote>
+<p>Il funzionamento di uno switch, almeno a livello concettuale, è abbastanza semplice. Al suo interno, si salva in memoria una tabella con due colonne e tante righe quante sono le porte fisiche dello switch.</p>
+<table><thead><tr><th>Port number</th><th>MAC address</th></tr></thead><tbody>
+<tr><td>1</td><td>16:a7:c7:66:13:f9</td></tr>
+<tr><td>2</td><td>4A:00:06:05:eb:32</td></tr>
+<tr><td>3</td><td></td></tr>
+<tr><td>4</td><td>06:cd:89:9a:64:77</td></tr>
+</tbody></table>
+<p>Quando riceve un pacchetto, lo switch prima di tutto assegna (se già non lo aveva fatto in precedenza) il MAC address del mittente alla porta dal quale lo ho ricevuto. Quindi controlla il MAC address del destinatario, e lo inoltra solo alla porta dove è connesso tale destinatario.</p>
+<p>Esempio: il computer nella porta 1 ha MAC address <code>16:a7:c7:66:13:f9</code> e vuole inviare un messaggio a <code>06:cd:89:9a:64:77</code>. Quando lo switch riceve il messaggio dalla porta 1, assegna <code>16:a7:c7:66:13:f9</code> a tale porta. Quindi controlla in quale riga c'è l'indirizzo del destinatario, in questo caso la porta 4, e inoltra il pacchetto solo a quella porta.</p>
+<p>Ma all'inizio, quando accendo per la prima volta lo switch, come faccio a riempire tutta la tabella? Ci sono varie strategie.</p>
+<ul>
+<li>quando un nuovo dispositivo si connette, invia un messaggio di broadcast che ha come destinatario lo speciale indirizzo <code>ff:ff:ff:ff:ff:ff</code>. Tutti i dispositivi connessi rispondono a questo messaggio, e la tabella viene riempita</li>
+<li>quando non trovo il destinatario di un messaggio nella tabella, lo inoltro a tutti, sperando che il corretto destinatario lo riceva. Questa operazione è chiamata <em>flooding</em> (allagamento).</li>
+</ul>
+<p>Se non è possibile consegnare il pacchetto, lo switch risponde al mittente comunicando che il destinatario non è reperibile.</p>
+<h2><a class="header" href="#switch-di-livelli-superiori" id="switch-di-livelli-superiori">Switch di livelli superiori</a></h2>
+<p>Il comportamento dello switch descritto fin qui è quello di uno switch &quot;puro&quot;, ovvero che opera unicamente al livello 2 data-link della pila ISO/OSI. Un tale dispositivo viene chiamato anche <em>switch L2</em>, e non sa niente dei livelli superiori; in particolare non sa cosa sia un indirizzo IP. È importante notare però che, al giorno d'oggi, molto spesso gli switch hanno molte funzioni ed operano anche a livelli superiori. Questo genere di dispositivi viene chiamato, in base alle caratteristiche, <em>switch L2+</em>, <em>switch L2/L3</em> o anche <em>switch L3</em>.</p>
+<p>Quindi non vi stupite se vedete un oggetto chiamato &quot;switch&quot; che lavora anche con IP e altro. L'importante è che sappiate orientarvi sempre correttamente e che non vi confondiate.</p>
+<h2><a class="header" href="#mac-address-e-sicurezza-informatica" id="mac-address-e-sicurezza-informatica">MAC address e sicurezza informatica</a></h2>
+<p>Abbiamo detto che il MAC address è univoco, associato all'interfaccia di rete. Aggiungiamo che non si può <em>cambiare</em> il MAC address scritto all'interno della scheda, perché è <em>hard-coded</em> al momento della fabbricazione. È possibile tuttavia <em>camuffarlo</em> nel momento dell'invio, in modo da fingerci qualcun altro. Questa strategia si chiama &quot;MAC spoofing&quot; ed ha moltissimi usi.</p>
+<p>Alcune applicazioni possono servire ad attaccare un sistema e a rubare informazioni che non sono dirette a noi. Oppure possiamo usarlo per impedire di essere tracciati dal nostro operatore telefonico o dal gestore del WiFi, o ancora per usare una licenza di un software che era associata ad un altro computer.</p>
+<p>Il MAC spoofing, come molto spesso accade in informatica, non è legale od illegale <em>di per sé</em>. Dipende dall'uso che ne facciamo, e molto spesso il confine della legalità è molto sfumato e difficile da definire.</p>
+<h1><a class="header" href="#network-layer" id="network-layer">Network layer</a></h1>
+<p>Work in progress!</p>
+<p>Concetto di indirizzo IP...</p>
+<p>Rete e maschera di sottorete...</p>
+<p>Dimensionamento di una rete... (es. ho 10 pc, quanto deve essere grande la sottorete?)</p>
+<p>ICANN...</p>
+<p>Conversione da notazione slash ad ottetti...</p>
+<p>Classi di indirizzi IP...</p>
 
                     </main>
 
