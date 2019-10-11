@@ -1,0 +1,6 @@
+[book]
+authors = ["wbigger"]
+language = "it"
+multilingual = false
+src = "src"
+title = "Course Template"
