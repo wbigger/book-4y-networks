@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html" class="active"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-sizing.html"><strong aria-hidden="true">3.4.</strong> Dimensionamento</a></li><li class="expanded "><a href="../02-network/04-arp.html"><strong aria-hidden="true">3.5.</strong> ARP table</a></li><li class="expanded "><a href="../02-network/05-packet-travel.html"><strong aria-hidden="true">3.6.</strong> Packet traveling</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html" class="active"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -156,7 +156,7 @@
                     <main>
                         <h1><a class="header" href="#indirizzi-ip-e-maschere-di-sottorete" id="indirizzi-ip-e-maschere-di-sottorete">Indirizzi IP e maschere di sottorete</a></h1>
 <p>L'indirizzo IP (IP sta per <em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
-<p class="centered big-font">
+<p class="centered xxl-font">
 <strong>
 172.16.254.1
 </strong>
@@ -203,9 +203,13 @@ maschera di sottorete: 32 - numero di bit per la dimensione della rete
 </ul>
 <h3><a class="header" href="#un-caso-particolare" id="un-caso-particolare">Un caso particolare</a></h3>
 <p>Prima di concludere, esaminiamo un caso particolare:</p>
+<p class="centered large-font">
+<strong>
+0.0.0.0/0
+</strong>
+</p>
+<p>A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</p>
 <ul>
-<li>0.0.0.0/0
-A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</li>
 <li>0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto</li>
 <li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
 Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Internet</strong>!</li>

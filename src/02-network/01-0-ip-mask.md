@@ -1,7 +1,7 @@
 # Indirizzi IP e maschere di sottorete
 L'indirizzo IP (IP sta per _Internet Protocol_) come detto è formato da 4 byte e viene rappresentato come segue:
 
-<p class="centered big-font">
+<p class="centered xxl-font">
 <strong>
 172.16.254.1
 </strong>
@@ -56,7 +56,12 @@ Facciamo alcuni esempi validi di indirizzi di rete con subnet mask:
 
 ### Un caso particolare
 Prima di concludere, esaminiamo un caso particolare:
-- 0.0.0.0/0
+<p class="centered large-font">
+<strong>
+0.0.0.0/0
+</strong>
+</p>
+
 A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:
 - 0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto
 - /0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi

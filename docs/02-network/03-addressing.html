@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="it" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Indirizzamento - Sistemi e Reti - 4y</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html" class="active"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Sistemi e Reti - 4y</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/wbigger/book-4y-networks/" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#ip-addressing" id="ip-addressing">IP addressing</a></h1>
+<p>Ora abbiamo tutti gli strumenti essenziali per fare consapevolmente il nostro lavoro di sistemista!</p>
+<p>Nella pratica del lavoro di amministratore di rete, una delle prime e fondamentali competenze è saper creare correttamente reti e sottoreti. Non c'è necessariamente una scelta giusta ed una sbagliata: come al solito, dipende dalle esigenze del cliente, dai vincoli di spesa e da requisiti di sicurezza ed efficenza. Sicuramente però una adeguata scelta delle sottoreti permetterà di semplificare molto il lavoro in futuro, ed una scelta infelice può portare a notti insonni e malfunzionamenti. Gli alleati migliori in questo lavoro sono come al solito studio, esperienza e saper chiedere aiuto quando necessario :)</p>
+<h2><a class="header" href="#esempio-di-indirizzamento" id="esempio-di-indirizzamento">Esempio di indirizzamento</a></h2>
+<p>Ipotizziamo che una scuola abbia appena messo in rete i propri computer, e ci chiede di assegnargli degli indirizzi IP. Non essendo connessi in rete prima, i PC non avevano nessun indirizzo, quindi dobbiamo cominciare da zero.</p>
+<p>I PC della scuola sono così distribuiti:</p>
+<ul>
+<li>3 laboratori con 20 computer ognuno</li>
+<li>l'amministrazione usa 10 computer</li>
+<li>ci sono circa 100 docenti con ognuno uno o due dispositivi da connettere alla rete</li>
+</ul>
+<p>OK. Come caso iniziale semplificato, possiamo cominciare il nostro lavoro. Per ogni rete che identifichiamo, dobbiamo individuare semplicemente l'indirizzo di rete e la maschera di sottorete. Notiamo in questo momento che non ci interessa se i dispositivi sono connessi fisicamente via switch oppure sono connessi wireless con un access point. Nel nostro livello 3 della pila ISO/OSI, questo non ci importa. Detto questo...via!</p>
+<p>Per prima cosa decidiamo di mettere ogni laboratorio in una propria sottorete, in modo che i docenti e gli assistenti di laboratorio possano trattarli in maniera indipendente. I computer dell' amministrazione ed i computer dei docenti sono altre due reti distinte, ed arriviamo quindi ad un totale di cinque reti. Per la rete dei docenti, ci conviene considerare il caso peggiore in cui tutti i docenti abbiamo due dispositivi: quindi consideriamo 200 host per il dimensionamento della rete.</p>
+<p>Dobbiamo in pratica riempire la seguente tabella:</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>200</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<h2><a class="header" href="#indirizzo-ip-di-partenza" id="indirizzo-ip-di-partenza">Indirizzo IP di partenza</a></h2>
+<p>Dobbiamo decidere che indirizzo di partenza dobbiamo dare all'intera rete, considerando che poi tutte le reti saranno a partire da quella. Sicuramente useremo degli indirizzi IP privati, visto che i computer della scuola non dovranno essere singolarmente raggiungibili da internet, e quindi non necessitano di un indirizzo IP pubblico. Ma quale indirizzi usiamo?</p>
+<p>Visto che siamo una scuola, possiamo metterci comodi e scegliere di partire con gli indirizzi privati <code>10.0.0.0/8</code>, in modo da avere tutti gli indirizzi IP che ci servono.</p>
+<p>A questo punto abbiamo davanti a noi due strade:</p>
+<ol>
+<li>fare un indirizzamento &quot;facile&quot;, in cui assegniamo a tutte le reti la stessa maschera</li>
+<li>fare un indirizzamento &quot;stretto&quot;, in cui assegniamo ad ogni rete la sua maschera minima.</li>
+</ol>
+<p>Quale scegliere? Ovviamente... dipende. Se non ci sono particolari vincoli, può essere utile la prima scelta: più semplice e veloce, meno errori. Se invece vogliamo per qualche motivo risparmiare indirizzi IP, scegliamo sicuramente la seconda strada.</p>
+<p>Di seguito vediamo entrambi i casi.</p>
+<h2><a class="header" href="#caso-1-stessa-subnet-mask" id="caso-1-stessa-subnet-mask">Caso 1: stessa subnet mask</a></h2>
+<p>Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comodi, sceglieremo una maschera che sia un multiplo di 8, così tutti i conti ci vengono semplici.</p>
+<p>Quale subnet scegliamo? Dovendone scegliere una per tutte, prendiamo in considerazione quella con il maggior numero di host, in questo caso quella per i docenti: 200 computer.</p>
+<p>In questo caso si vede abbastanza facillmente che va bene una rete di classe C, cioé <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>20</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.2.0</td><td align="right">/24</td></tr>
+<tr><td>10</td><td align="center">10.0.3.0</td><td align="right">/24</td></tr>
+<tr><td>200</td><td align="center">10.0.4.0</td><td align="right">/24</td></tr>
+</tbody></table>
+<h2><a class="header" href="#caso-2-subnet-minima" id="caso-2-subnet-minima">Caso 2: subnet minima</a></h2>
+<p>In questo caso vogliamo invece calcolare per ogni rete la dimensione minima della subnet.</p>
+<p>Il primo passo che ci conviene fare è ordinare le reti dalla più grande alla più piccola, come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>A questo punto calcoliamo il numero di bit che ci servono per il dimensionamento di ogni rete. Ricordiamoci che al numero di host va aggiunto un indirizzo per la rete e uno per il broadcast, quindi il calcolo è:</p>
+<p class="centered">
+<strong>
+numero IP = numero host + 2
+</strong>
+</p>
+<p>Per la prima rete dei docenti, devo assegnare 202 indirizzi. La potenza di due maggiore di 202 più vicina è 256, che corrisponde a 8 bit. Quindi la parte fissa della nostra rete sarà, come abbiamo già visto, <code>32 - 8 = 24 bit</code>, che corrisponde alla subnet mask.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Per la prima rete del laboratorio, la prima cosa da fare è calcolare l'IP di partenza. Come facciamo? Dobbiamo calcolare il primo indirizzo IP libero dopo la rete precedente. Siccome la rete dei docenti parte da 10.0.0.0 e ha 256 IP, il primo indirizzo IP disponibile è 10.0.1.0.</p>
+<p>Per il calcolo della maschera, considerando che i laboratori hanno 20 computer, necessitano di <code>20 + 2 = 22</code> host. La potenza di due più vicina è 32, che corrisponde a 5 bit. La subnet è quindi <code>32 - 5 = 27 bits</code>.</p>
+<p>Ricapitolando, per il primo laboratorio la situazione è la seguente.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Ora, per calcolare l'IP di partenza della rete successiva bisogna prestare un po' di attenzione. La rete che abbiamo appena calcolato parte da <code>10.0.1.0</code> e ha 32 IP. Quindi la rete successiva partirà da <code>10.0.1.32</code>. La maschera di rete è la stessa, avendo lo stesso numero di host all'interno.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Ripetendo il ragionamento anche per il terzo laboratorio, arriviamo alla seguente situazione.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.64</td><td align="right">/27</td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Infine, calcoliamo IP e subnet della rete amministrativa, l'ultima. Lascio a voi di ripetere i calcoli precedenti e verificare che la tabella completa è come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.64</td><td align="right">/27</td></tr>
+<tr><td>10</td><td align="center">10.0.1.96</td><td align="right">/28</td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../02-network/02-icann.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../02-network/04-routing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../02-network/02-icann.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../02-network/04-routing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

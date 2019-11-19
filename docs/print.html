@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-sizing.html"><strong aria-hidden="true">3.4.</strong> Dimensionamento</a></li><li class="expanded "><a href="02-network/04-arp.html"><strong aria-hidden="true">3.5.</strong> ARP table</a></li><li class="expanded "><a href="02-network/05-packet-travel.html"><strong aria-hidden="true">3.6.</strong> Packet traveling</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -283,7 +283,7 @@ p.img-container::after {
 <p>Una nota sull'uso della parola &quot;Internet&quot;: tecnicamente, una qualsiasi rete di computer connessi tra di loro con indirizzo IP è una rete Internet. Tuttavia, nell'uso quotidiano usiamo questa parola per indicare la rete <em>globale</em> di computer. In questo testo si specificherà &quot;rete Internet globale&quot; quando necessario per evitare fraintendimenti.</p>
 <h1><a class="header" href="#indirizzi-ip-e-maschere-di-sottorete" id="indirizzi-ip-e-maschere-di-sottorete">Indirizzi IP e maschere di sottorete</a></h1>
 <p>L'indirizzo IP (IP sta per <em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
-<p class="centered big-font">
+<p class="centered xxl-font">
 <strong>
 172.16.254.1
 </strong>
@@ -330,9 +330,13 @@ maschera di sottorete: 32 - numero di bit per la dimensione della rete
 </ul>
 <h3><a class="header" href="#un-caso-particolare" id="un-caso-particolare">Un caso particolare</a></h3>
 <p>Prima di concludere, esaminiamo un caso particolare:</p>
+<p class="centered large-font">
+<strong>
+0.0.0.0/0
+</strong>
+</p>
+<p>A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</p>
 <ul>
-<li>0.0.0.0/0
-A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</li>
 <li>0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto</li>
 <li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
 Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Internet</strong>!</li>
@@ -395,8 +399,108 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <li>192.168.0.0/16, che va quindi da 192.168.0.0 to 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
 </ul>
 <p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connttersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
-<h1><a class="header" href="#dimensionamento" id="dimensionamento">Dimensionamento</a></h1>
-<p>Dimensionamento di una rete... (es. ho 10 pc, quanto deve essere grande la sottorete?)</p>
+<h1><a class="header" href="#ip-addressing" id="ip-addressing">IP addressing</a></h1>
+<p>Ora abbiamo tutti gli strumenti essenziali per fare consapevolmente il nostro lavoro di sistemista!</p>
+<p>Nella pratica del lavoro di amministratore di rete, una delle prime e fondamentali competenze è saper creare correttamente reti e sottoreti. Non c'è necessariamente una scelta giusta ed una sbagliata: come al solito, dipende dalle esigenze del cliente, dai vincoli di spesa e da requisiti di sicurezza ed efficenza. Sicuramente però una adeguata scelta delle sottoreti permetterà di semplificare molto il lavoro in futuro, ed una scelta infelice può portare a notti insonni e malfunzionamenti. Gli alleati migliori in questo lavoro sono come al solito studio, esperienza e saper chiedere aiuto quando necessario :)</p>
+<h2><a class="header" href="#esempio-di-indirizzamento" id="esempio-di-indirizzamento">Esempio di indirizzamento</a></h2>
+<p>Ipotizziamo che una scuola abbia appena messo in rete i propri computer, e ci chiede di assegnargli degli indirizzi IP. Non essendo connessi in rete prima, i PC non avevano nessun indirizzo, quindi dobbiamo cominciare da zero.</p>
+<p>I PC della scuola sono così distribuiti:</p>
+<ul>
+<li>3 laboratori con 20 computer ognuno</li>
+<li>l'amministrazione usa 10 computer</li>
+<li>ci sono circa 100 docenti con ognuno uno o due dispositivi da connettere alla rete</li>
+</ul>
+<p>OK. Come caso iniziale semplificato, possiamo cominciare il nostro lavoro. Per ogni rete che identifichiamo, dobbiamo individuare semplicemente l'indirizzo di rete e la maschera di sottorete. Notiamo in questo momento che non ci interessa se i dispositivi sono connessi fisicamente via switch oppure sono connessi wireless con un access point. Nel nostro livello 3 della pila ISO/OSI, questo non ci importa. Detto questo...via!</p>
+<p>Per prima cosa decidiamo di mettere ogni laboratorio in una propria sottorete, in modo che i docenti e gli assistenti di laboratorio possano trattarli in maniera indipendente. I computer dell' amministrazione ed i computer dei docenti sono altre due reti distinte, ed arriviamo quindi ad un totale di cinque reti. Per la rete dei docenti, ci conviene considerare il caso peggiore in cui tutti i docenti abbiamo due dispositivi: quindi consideriamo 200 host per il dimensionamento della rete.</p>
+<p>Dobbiamo in pratica riempire la seguente tabella:</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>200</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<h2><a class="header" href="#indirizzo-ip-di-partenza" id="indirizzo-ip-di-partenza">Indirizzo IP di partenza</a></h2>
+<p>Dobbiamo decidere che indirizzo di partenza dobbiamo dare all'intera rete, considerando che poi tutte le reti saranno a partire da quella. Sicuramente useremo degli indirizzi IP privati, visto che i computer della scuola non dovranno essere singolarmente raggiungibili da internet, e quindi non necessitano di un indirizzo IP pubblico. Ma quale indirizzi usiamo?</p>
+<p>Visto che siamo una scuola, possiamo metterci comodi e scegliere di partire con gli indirizzi privati <code>10.0.0.0/8</code>, in modo da avere tutti gli indirizzi IP che ci servono.</p>
+<p>A questo punto abbiamo davanti a noi due strade:</p>
+<ol>
+<li>fare un indirizzamento &quot;facile&quot;, in cui assegniamo a tutte le reti la stessa maschera</li>
+<li>fare un indirizzamento &quot;stretto&quot;, in cui assegniamo ad ogni rete la sua maschera minima.</li>
+</ol>
+<p>Quale scegliere? Ovviamente... dipende. Se non ci sono particolari vincoli, può essere utile la prima scelta: più semplice e veloce, meno errori. Se invece vogliamo per qualche motivo risparmiare indirizzi IP, scegliamo sicuramente la seconda strada.</p>
+<p>Di seguito vediamo entrambi i casi.</p>
+<h2><a class="header" href="#caso-1-stessa-subnet-mask" id="caso-1-stessa-subnet-mask">Caso 1: stessa subnet mask</a></h2>
+<p>Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comodi, sceglieremo una maschera che sia un multiplo di 8, così tutti i conti ci vengono semplici.</p>
+<p>Quale subnet scegliamo? Dovendone scegliere una per tutte, prendiamo in considerazione quella con il maggior numero di host, in questo caso quella per i docenti: 200 computer.</p>
+<p>In questo caso si vede abbastanza facillmente che va bene una rete di classe C, cioé <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>20</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.2.0</td><td align="right">/24</td></tr>
+<tr><td>10</td><td align="center">10.0.3.0</td><td align="right">/24</td></tr>
+<tr><td>200</td><td align="center">10.0.4.0</td><td align="right">/24</td></tr>
+</tbody></table>
+<h2><a class="header" href="#caso-2-subnet-minima" id="caso-2-subnet-minima">Caso 2: subnet minima</a></h2>
+<p>In questo caso vogliamo invece calcolare per ogni rete la dimensione minima della subnet.</p>
+<p>Il primo passo che ci conviene fare è ordinare le reti dalla più grande alla più piccola, come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>A questo punto calcoliamo il numero di bit che ci servono per il dimensionamento di ogni rete. Ricordiamoci che al numero di host va aggiunto un indirizzo per la rete e uno per il broadcast, quindi il calcolo è:</p>
+<p class="centered">
+<strong>
+numero IP = numero host + 2
+</strong>
+</p>
+<p>Per la prima rete dei docenti, devo assegnare 202 indirizzi. La potenza di due maggiore di 202 più vicina è 256, che corrisponde a 8 bit. Quindi la parte fissa della nostra rete sarà, come abbiamo già visto, <code>32 - 8 = 24 bit</code>, che corrisponde alla subnet mask.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Per la prima rete del laboratorio, la prima cosa da fare è calcolare l'IP di partenza. Come facciamo? Dobbiamo calcolare il primo indirizzo IP libero dopo la rete precedente. Siccome la rete dei docenti parte da 10.0.0.0 e ha 256 IP, il primo indirizzo IP disponibile è 10.0.1.0.</p>
+<p>Per il calcolo della maschera, considerando che i laboratori hanno 20 computer, necessitano di <code>20 + 2 = 22</code> host. La potenza di due più vicina è 32, che corrisponde a 5 bit. La subnet è quindi <code>32 - 5 = 27 bits</code>.</p>
+<p>Ricapitolando, per il primo laboratorio la situazione è la seguente.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Ora, per calcolare l'IP di partenza della rete successiva bisogna prestare un po' di attenzione. La rete che abbiamo appena calcolato parte da <code>10.0.1.0</code> e ha 32 IP. Quindi la rete successiva partirà da <code>10.0.1.32</code>. La maschera di rete è la stessa, avendo lo stesso numero di host all'interno.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Ripetendo il ragionamento anche per il terzo laboratorio, arriviamo alla seguente situazione.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.64</td><td align="right">/27</td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Infine, calcoliamo IP e subnet della rete amministrativa, l'ultima. Lascio a voi di ripetere i calcoli precedenti e verificare che la tabella completa è come segue.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.32</td><td align="right">/27</td></tr>
+<tr><td>20</td><td align="center">10.0.1.64</td><td align="right">/27</td></tr>
+<tr><td>10</td><td align="center">10.0.1.96</td><td align="right">/28</td></tr>
+</tbody></table>
+<h1><a class="header" href="#routing" id="routing">Routing</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rYodcvhh7b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </main>
 
