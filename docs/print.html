@@ -351,9 +351,12 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <ul>
 <li><strong>classe A</strong>: il primo bit dell'indirizzo è 0, mantiene la maschera a 8 bit</li>
 <li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0, viene assegnata una maschera a 16 bit</li>
-<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1, viene assegnata una maschera a 24 bit</li>
+<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0, viene assegnata una maschera a 24 bit</li>
 </ul>
 <p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' si andò avanti così.</p>
+<blockquote>
+<p>Per completezza, esistono altre due classi, la D e la E, in base al valore del terzo e quarto bit. Noi non le tratteremo.</p>
+</blockquote>
 <h3><a class="header" href="#una-scelta-infelice" id="una-scelta-infelice">Una scelta infelice</a></h3>
 <p>Nel passare alle classi, ci fu la necessità di rappresentare in qualche modo la maschera di sottorete. Decisero di rappresentare le maschere con la stessa notazione in 4 ottetti degli indirizzi IP, in cui venivano valorizzati ad 1 il numero di bit della maschera di sottorete. Si ottenne il risultato seguente:</p>
 <ul>
@@ -375,7 +378,53 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <blockquote>
 <p>Alcuni enti ed aziende hanno mantenuto la proprietà di interi blocchi di classe A anche dopo il passaggio a CIDR. Per un elenco completo, guardate <a href="https://en.wikipedia.org/wiki/List_of_assigned_/8_IPv4_address_blocks">questa pagina</a>. La lista è molto interessante perché fa capire ancora oggi quali sono le influenze ed i rapporti di potere nel mondo di Internet!</p>
 </blockquote>
-<p>TODO: Conversione da notazione slash ad ottetti...</p>
+<h2><a class="header" href="#passaggio-da-notazione-ad-ottetti-a-notazione-slash" id="passaggio-da-notazione-ad-ottetti-a-notazione-slash">Passaggio da notazione ad ottetti a notazione slash</a></h2>
+<p>È importante saper passare da una notazione all'altra, perché nella pratica le troverete tutte e due.</p>
+<h3><a class="header" href="#da-ottetti-a-slash" id="da-ottetti-a-slash">Da ottetti a slash</a></h3>
+<p>Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in slash. Prendiamo ad esempio la maschera <code>255.255.240.0</code>. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, 240, bisogna scomportlo in binario. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.</p>
+<p>Mi scrivo la seguente tabellina.</p>
+<table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
+<tr><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
+</tbody></table>
+<p>Ora metto degli 1 in modo che la somma dei numeri che stanno sopra mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere 240, devo mettere 1 nelle prime quattro caselle.</p>
+<table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
+</tbody></table>
+<p>In tutte le altre caselle metto 0, ottenendo infine il seguente risultato.</p>
+<table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="center">0</td></tr>
+</tbody></table>
+<p>Mi sono calcolato così che il numero <code>240</code> in decimale si converte in <code>11110000</code> in binario.</p>
+<p>Ora metto tutti gli ottetti in fila.</p>
+<p class="centered">
+<strong>
+255.255.255.0<br>
+11111111.11111111.11110000.00000000
+</strong>
+</p>
+<p>Conto gli uno a partire dall'inizio, sono 8 + 8 + 4 = 20. Sono arrivato alla fine: la subnet mask in slash notation vale proprio 20!</p>
+<p class="centered xxl-font">
+<strong>
+255.255.240.0 -> /20
+</strong>
+</p>
+<h3><a class="header" href="#da-slash-a-ottetti" id="da-slash-a-ottetti">Da slash a ottetti</a></h3>
+<p>Bisogna fare l'operazione inversa del paragrafo precedente. Ipotizziamo di avere la subnet <code>\27</code>. Per convertirla in ottetti, metto 27 bit a 1 di fila, separandoli a gruppi di 8 bit.</p>
+<p class="centered xxl-font">
+<strong>
+11111111.11111111.11111111.11100000
+</strong>
+</p>
+<p>I primi tre ottetti si calcolano immediatamente, perché essendo tutti 1 valgono 255. Per l'ultimo ottetto, faccio il calcolo, sempre usando la tabella di prima.</p>
+<table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="center">0</td><td align="center">0</td></tr>
+</tbody></table>
+<p>Quindi il numero che cerco è 128+64+32, che vale <code>224</code>. A questo punto abbiamo finito, la conversione diventa come segue.</p>
+<p class="centered xxl-font">
+<strong>
+/27 -> 255.255.255.224
+</strong>
+</p>
 <h3><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h3>
 <p>Finora abbiamo parlato di reti ed indirizzi IP, ma la domanda sorge spontanea: quali indirizzi posso utilizzare io per la mia rete, e quali no? Come faccio a saperlo?</p>
 <p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, e nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>

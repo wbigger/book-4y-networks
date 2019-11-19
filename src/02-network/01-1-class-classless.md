@@ -11,9 +11,11 @@ Quando negli anni '80 la tecnologia di Internet prese piede a livello mondiale, 
 Decisero di divedere gli indirizi IP in tre _classi_:
 - **classe A**: il primo bit dell'indirizzo è 0, mantiene la maschera a 8 bit
 - **classe B**: il primo bit dell'indirizzo è 1 e il secondo 0, viene assegnata una maschera a 16 bit
-- **classe C**: i primi due bit dell'indirizzo sono entrambi 1, viene assegnata una maschera a 24 bit
+- **classe C**: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0, viene assegnata una maschera a 24 bit
 
 In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' si andò avanti così.
+
+> Per completezza, esistono altre due classi, la D e la E, in base al valore del terzo e quarto bit. Noi non le tratteremo.
 
 ### Una scelta infelice
 Nel passare alle classi, ci fu la necessità di rappresentare in qualche modo la maschera di sottorete. Decisero di rappresentare le maschere con la stessa notazione in 4 ottetti degli indirizzi IP, in cui venivano valorizzati ad 1 il numero di bit della maschera di sottorete. Si ottenne il risultato seguente:
@@ -37,4 +39,69 @@ Per cui, agli inizi degli anni '90 si cambiò di nuovo sistema, abbandonando il 
 
 > Alcuni enti ed aziende hanno mantenuto la proprietà di interi blocchi di classe A anche dopo il passaggio a CIDR. Per un elenco completo, guardate [questa pagina](https://en.wikipedia.org/wiki/List_of_assigned_/8_IPv4_address_blocks). La lista è molto interessante perché fa capire ancora oggi quali sono le influenze ed i rapporti di potere nel mondo di Internet!
 
-TODO: Conversione da notazione slash ad ottetti...
+
+## Passaggio da notazione ad ottetti a notazione slash
+È importante saper passare da una notazione all'altra, perché nella pratica le troverete tutte e due.
+
+### Da ottetti a slash
+Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in slash. Prendiamo ad esempio la maschera `255.255.240.0`. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, 240, bisogna scomportlo in binario. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.
+
+Mi scrivo la seguente tabellina.
+
+|128|64|32|16|8|4|2|1|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|_|_|_|_|_|_|_|_|
+
+Ora metto degli 1 in modo che la somma dei numeri che stanno sopra mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere 240, devo mettere 1 nelle prime quattro caselle.
+
+|128|64|32|16|8|4|2|1|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|1|1|1|1|_|_|_|_|
+
+In tutte le altre caselle metto 0, ottenendo infine il seguente risultato.
+
+|128|64|32|16|8|4|2|1|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|1|1|1|1|0|0|0|0|
+
+Mi sono calcolato così che il numero `240` in decimale si converte in `11110000` in binario.
+
+Ora metto tutti gli ottetti in fila.
+
+<p class="centered">
+<strong>
+255.255.255.0<br>
+11111111.11111111.11110000.00000000
+</strong>
+</p>
+
+Conto gli uno a partire dall'inizio, sono 8 + 8 + 4 = 20. Sono arrivato alla fine: la subnet mask in slash notation vale proprio 20!
+
+<p class="centered xxl-font">
+<strong>
+255.255.240.0 -> /20
+</strong>
+</p>
+
+### Da slash a ottetti
+Bisogna fare l'operazione inversa del paragrafo precedente. Ipotizziamo di avere la subnet `\27`. Per convertirla in ottetti, metto 27 bit a 1 di fila, separandoli a gruppi di 8 bit.
+
+<p class="centered xxl-font">
+<strong>
+11111111.11111111.11111111.11100000
+</strong>
+</p>
+
+I primi tre ottetti si calcolano immediatamente, perché essendo tutti 1 valgono 255. Per l'ultimo ottetto, faccio il calcolo, sempre usando la tabella di prima.
+
+|128|64|32|16|8|4|2|1|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|1|1|1|0|0|0|0|0|
+
+Quindi il numero che cerco è 128+64+32, che vale `224`. A questo punto abbiamo finito, la conversione diventa come segue.
+
+<p class="centered xxl-font">
+<strong>
+/27 -> 255.255.255.224
+</strong>
+</p>
