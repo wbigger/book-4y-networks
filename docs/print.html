@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="it" class="sidebar-visible no-js">
+<html lang="it" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -31,14 +31,16 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="custom.css">
+        
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -62,8 +64,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -79,8 +84,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li><a href="02-network/index.html"><strong aria-hidden="true">3.</strong> Network</a></li></ol>
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-sizing.html"><strong aria-hidden="true">3.4.</strong> Dimensionamento</a></li><li class="expanded "><a href="02-network/04-arp.html"><strong aria-hidden="true">3.5.</strong> ARP table</a></li><li class="expanded "><a href="02-network/05-packet-travel.html"><strong aria-hidden="true">3.6.</strong> Packet traveling</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -117,6 +122,10 @@
                         <div class="right-buttons">
                             <a href="print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/wbigger/book-4y-networks/" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
                             </a>
                             
                         </div>
@@ -259,13 +268,135 @@ p.img-container::after {
 <p>Il MAC spoofing può servire ad attaccare un sistema per intercettare informazioni che non sarebbero dirette a noi. Oppure possiamo usarlo per impedire di essere tracciati dal nostro operatore telefonico o dal gestore del WiFi, o ancora per usare una licenza di un software che era associata ad un altro computer.</p>
 <p>Il MAC spoofing, come molto spesso accade in informatica, non è legale od illegale <em>di per sé</em>. Dipende dall'uso che ne facciamo, e molto spesso il confine della legalità è molto sfumato e difficile da definire.</p>
 <h1><a class="header" href="#network-layer" id="network-layer">Network layer</a></h1>
-<p>Work in progress!</p>
-<p>Concetto di indirizzo IP...</p>
-<p>Rete e maschera di sottorete...</p>
+<p>Finora abbiamo visto come collegare fra di loro un numero relativamente piccolo di computer, ovvero quelli collegabili ad un singolo switch. Per connettere ancora più computer, potremmo mettere degli switch a cascata, collegati tra di loro: si può fare, ma al crescere dei computer e degli switch, si cominciano ad avere una serie di problemi di inefficienza e sicurezza che devono essere risolti in altro modo. Entrano ora in gioco i concetti di rete e sottorete, in altre parole il &quot;network layer&quot;.</p>
+<h2><a class="header" href="#la-nascita-di-internet" id="la-nascita-di-internet">La nascita di Internet</a></h2>
+<p>Per far crescere il numero di computer connessi tra loro, dobbiamo dividerli in dei gruppi separati che comunicano tra di loro in modo controllato.</p>
+<p>La soluzione più utilizzata oggi è quella di assegnare un altro indirizzo ad ogni macchina, chiamato <em>IP Address</em>, formato da soli 4 byte, che lo identifica univocamente all'interno di una sottorete. A questo indirizzo viene sempre associato un altro numero, chiamato maschera di sottorete (<em>subnet mask</em>), anch'esso di 4 byte, che definisce la grandezza della sottorete in cui ci troviamo. Le reti sono connesse tra di loro da delle macchine dedicate, tipicamente dei <em>router</em> (instradatori). Questo sistema venne inventato agli inizi degli anni '70 e venne chiamato <strong>Internet</strong>, ed è proprio quello che utilizziamo oggi quotidianamente.</p>
+<p class="img-container">
+<img class="right_side w35p" title="vint-bob" alt="vint-bob" src="02-network/assets/vint-bob.jpg">
+<p>I padri fondatori di Internet sono considerati <a href="https://it.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a> e <a href="https://it.wikipedia.org/wiki/Robert_Kahn">Bob Kahn</a> che nel <strong>1972</strong> circa, mentre lavoravano presso il DARPA (Agenzia per i Progetti di ricerca avanzata per la Difesa), in America, hanno messo le basi per questa tecnologia ed i relativi protocolli.</p>
+</p>
+<blockquote>
+<p>Internet non è l'unico sistema che è nato negli anni 70, ma è quello che nel tempo ha preso il sopravvento rispetto a tutti gli altri.</p>
+</blockquote>
+<p>Internet si appoggia sul livello 2 della pila ISO/OSI (che <em>non</em> sostituisce!), e si colloca immediatamente sopra, quindi nel livello 3, che è appunto il livello di rete (network layer).</p>
+<p>Una nota sull'uso della parola &quot;Internet&quot;: tecnicamente, una qualsiasi rete di computer connessi tra di loro con indirizzo IP è una rete Internet. Tuttavia, nell'uso quotidiano usiamo questa parola per indicare la rete <em>globale</em> di computer. In questo testo si specificherà &quot;rete Internet globale&quot; quando necessario per evitare fraintendimenti.</p>
+<h1><a class="header" href="#indirizzi-ip-e-maschere-di-sottorete" id="indirizzi-ip-e-maschere-di-sottorete">Indirizzi IP e maschere di sottorete</a></h1>
+<p>L'indirizzo IP (IP sta per <em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
+<p class="centered big-font">
+<strong>
+172.16.254.1
+</strong>
+</p>
+<p>Ognuno dei numeri rappresenta un byte e può quindi assumere un valore da 0 a 255.</p>
+<p>Un indirizzo IP può rappresentare in alternativa una delle seguenti cose:</p>
+<ul>
+<li>indirizzo IP che identifica una rete</li>
+<li>indirizzo IP che identifica un dispositivo appartenente ad una rete</li>
+<li>indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appertenenti ad una determinata rete.</li>
+</ul>
+<p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene l'IP. Non può esistere un indirizzo IP senza subnet mask!</p>
+<h2><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h2>
+<p>Tutto parte con l'indirizzo che assegniamo ad una rete. Alcuni esempi di indirizzi di rete validi sono:</p>
+<ul>
+<li>10.0.0.0</li>
+<li>10.168.232.64</li>
+<li>192.168.43.0</li>
+<li>216.58.198.0</li>
+</ul>
+<p>Attenzione: gli indirizzi di rete <strong>non</strong> possono essere assegnati a dispositivi, siano essi computer o router. Sono indirizzi che individuano la rete e non corrispondono a nessun oggetto fisico reale.</p>
+<p>Quanti dispositivi può contenere una rete? Dipende dal secondo numero fondamentale di cui abbiamo parlato, ovvero la maschera di sottorete.</p>
+<h2><a class="header" href="#maschera-di-sottorete" id="maschera-di-sottorete">Maschera di sottorete</a></h2>
+<p>Come facciamo a dire quanti computer possono far parte di una rete? Ragioniamo su quale può essere un modo comodo.</p>
+<p>Sappiamo che, da come è stato concepito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
+<blockquote>
+<p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato nel 2004 e si chiama IPv6, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, ma il suo effettivo utilizzo è al momento limitato ad alcuni settori di nicchia. Il suo futuro è legato, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
+</blockquote>
+<p>Per calcolare la dimensione minima di una rete bisogna prestare leggermente più attenzione. Nel caso limite, una rete è essere formata minimo da 2 computer. Una rete di un singolo computer infatti... non è una rete :) A questi due indirizzi assegnati ai computer dobbiamo aggiungere l'indirizzo IP della rete, e quello di broadcast. Abbiamo quindi un totale di 4 indirizzi IP per la rete più piccola possibile. Per identificare 4 indirizzi servono esattamente 2 bit.</p>
+<p>Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bit della parte <em>fissa</em> del nostro indirizzo IP, ovvero quella parte iniziale che non cambia. Una rete della massima grandezza <em>non</em> avrà una parte fissa, e quindi la maschera di sottorete sarà esattamente 0. Se invece noi abbiamo una rete con due soli computer, avremo solo gli ultimi 2 bit variabili, e la nostra maschera di sottorete sarà esattamente 30.</p>
+<p>In generale, la formula per calcolare la maschera di sottorete è:</p>
+<p class="centered">
+<strong>
+maschera di sottorete: 32 - numero di bit per la dimensione della rete
+</strong>
+</p>
+<p>Questo numero convenzionalmente viene messo subito dopo l'indirizzo IP, separato da uno slash (<code>/</code>); per questo motivo viene chiamata anche <em>slash notation</em>.</p>
+<p>Facciamo alcuni esempi validi di indirizzi di rete con subnet mask:</p>
+<ul>
+<li>10.0.0.0/8</li>
+<li>10.168.232.64/20</li>
+<li>192.168.43.0/24</li>
+<li>216.58.198.0/30</li>
+</ul>
+<h3><a class="header" href="#un-caso-particolare" id="un-caso-particolare">Un caso particolare</a></h3>
+<p>Prima di concludere, esaminiamo un caso particolare:</p>
+<ul>
+<li>0.0.0.0/0
+A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</li>
+<li>0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto</li>
+<li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
+Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Internet</strong>!</li>
+</ul>
+<h1><a class="header" href="#classful-e-classless" id="classful-e-classless">Classful e classless</a></h1>
+<p>Prima di andare avanti, è necessario fare un approfondimento storico, per capire meglio il presente.</p>
+<p>Il metodo che abbiamo visto di calcolare la maschera di sottorete utilizzando il numero esatto di bit, è attualmente lo standard e viene chiamato CIDR (Classless Inter-Domain Routing). Fate attenzione alla parola <em>classless</em>, che in italiano si può tradurre con &quot;senza classi&quot;: per capire a cosa si riferisce, bisogna addentrarsi un po' nella storia.</p>
+<h2><a class="header" href="#classi-di-indirizzi-ip" id="classi-di-indirizzi-ip">Classi di indirizzi IP</a></h2>
+<p>Quando è nato Internet, negli anni '70, la maschera di sottorete era unica e fissa per tutti gli indirizzi IP, ed era di 8 bit. C'erano quindi solo 254 reti, ognuna con circa 16 milioni di dispositivi.</p>
+<p>Quando negli anni '80 la tecnologia di Internet prese piede a livello mondiale, ci fu la necessità di mettere a disposizione un maggior numero di reti. Si decise quindi di cambiare un po' strategia e di assegnare delle maschere di rete in automatico in base ai primi bit dell'indirizzo IP.</p>
+<p>Decisero di divedere gli indirizi IP in tre <em>classi</em>:</p>
+<ul>
+<li><strong>classe A</strong>: il primo bit dell'indirizzo è 0, mantiene la maschera a 8 bit</li>
+<li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0, viene assegnata una maschera a 16 bit</li>
+<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1, viene assegnata una maschera a 24 bit</li>
+</ul>
+<p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' si andò avanti così.</p>
+<h3><a class="header" href="#una-scelta-infelice" id="una-scelta-infelice">Una scelta infelice</a></h3>
+<p>Nel passare alle classi, ci fu la necessità di rappresentare in qualche modo la maschera di sottorete. Decisero di rappresentare le maschere con la stessa notazione in 4 ottetti degli indirizzi IP, in cui venivano valorizzati ad 1 il numero di bit della maschera di sottorete. Si ottenne il risultato seguente:</p>
+<ul>
+<li>per la classe A: 255.0.0.0</li>
+<li>per la classe B: 255.255.0.0</li>
+<li>per la classe C: 255.255.255.0</li>
+</ul>
+<p>Questa scelta fu un po' infelice, perché ha una serie di problemi:</p>
+<ol>
+<li>la rappresentazione è uguale a quella degli indirizzi IP, nonostante sia un concetto completamente diverso, portando quindi ad una certa confusione</li>
+<li>la rappresentazione è molto prolissa, quando viene scritta usa molti più caratteri di quanto potrebbero essere necessari</li>
+<li>ci sono potenzialmente molte maschere di sottorete non valide. Ad esempio le maschere 255.255.235.0, 255.255.0.255 non hanno senso e sono invalide. Questo, insieme al punto precedente, porta ad un maggior rischio di errori</li>
+<li>se il numero di bit della maschera non è moltiplo di 8 questa notazione diventa di difficile interpretazione. Ad esempio una maschera di 20 bit viene rappresentata come 255.255.240.0, ed una maschera di 14 bit come 255.252.0.0, e la conversione richiede un po' di calcoli e di pratica</li>
+</ol>
+<p>Ad ogni modo, per diversi anni si è usata questa notazione e si trova molto spesso ancora in giro, quindi è di fondamentale importanza comprendere il significato di queste maschere e saper passare dalla notazione ad ottetti alla notazione slash e viceversa.</p>
+<h2><a class="header" href="#indirizzi-ip-senza-classi" id="indirizzi-ip-senza-classi">Indirizzi IP senza classi</a></h2>
+<p>Il problema dell'assegnazione degli indirizzi si ripresentò verso la fine degli anni '80, in particolare per gli indirizzi di classe C: la nuova Internet Economy vedeva fiorire molte piccole aziende che avevano bisogno di pochi indirizzi IP, ma si trovavano costrette A pagare alte somme per avere un indirizzo di classe C, che per la maggior parte non utilizzavano.</p>
+<p>Per cui, agli inizi degli anni '90 si cambiò di nuovo sistema, abbandonando il concetto di classe: ogni indirizzo IP, indipendentemente dal suo valore numerico, poteva avere una qualsiasi maschera di sottorete. Si passò contestualmente anche alla notazione slash, più compatta e chiara, che è ancora lo standard attuale.</p>
+<blockquote>
+<p>Alcuni enti ed aziende hanno mantenuto la proprietà di interi blocchi di classe A anche dopo il passaggio a CIDR. Per un elenco completo, guardate <a href="https://en.wikipedia.org/wiki/List_of_assigned_/8_IPv4_address_blocks">questa pagina</a>. La lista è molto interessante perché fa capire ancora oggi quali sono le influenze ed i rapporti di potere nel mondo di Internet!</p>
+</blockquote>
+<p>TODO: Conversione da notazione slash ad ottetti...</p>
+<h3><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h3>
+<p>Finora abbiamo parlato di reti ed indirizzi IP, ma la domanda sorge spontanea: quali indirizzi posso utilizzare io per la mia rete, e quali no? Come faccio a saperlo?</p>
+<p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, e nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>
+<p class="img-container">
+<img class="right_side w10" title="ICANN" alt="ICANN" src="02-network/assets/icann.png">
+<p>Ma se vogliamo connettere la nostra rete ad una rete più grande, magari all'Internet globale, c'è chiaramente bisogno di un organizzazione super partes che organizzasse le cose. Questa organizzazione si chiama <a href="https://www.icann.org/">ICANN</a> (Internet Corporation for Assigned Names and Numbers) che, come dice il nome, si occupa proprio di assegnare i nomi ed in numeri di Internet in maniera da non creare conflitti.</p>
+</p>
+<p>ICANN attualmente funziona nel seguente modo:</p>
+<ul>
+<li>assegna degli indirizzi pubblici agli Internet Service Provider (es. TIM, Vodafone, Fastweb, Linkem, Civitanet, Aruba, etc.) che ne fanno richiesta</li>
+<li>riserva alcuni indirizzi per utilizzi speciali, ad esempio per delle reti locali private</li>
+</ul>
+<blockquote>
+<p>A volte potete sentir parlare di <a href="https://www.iana.org/">IANA</a>(Internet Assigned Numbers Authority). Non è in contraddizione: lo IANA è una emanazione dell'ICANN, con lo specifico compito di gestire gli indirizzi IP.</p>
+</blockquote>
+<h4><a class="header" href="#indirizzi-di-reti-locali-private" id="indirizzi-di-reti-locali-private">Indirizzi di reti locali private</a></h4>
+<p>ICANN riserva i seguenti indirizzi da utilizzare per creare delle reti private all'interno della propria casa o della propria azienda:</p>
+<ul>
+<li>10.0.0.0/8, che va quindi da 10.0.0.0 a 10.255.255.255, con una maschera di sottorete di default di 8 bit (classe A)</li>
+<li>172.16.0.0/12, che va quindi da 172.16.0.0 a 172.31.255.255, con una maschera di sottorete di default di 16 bit (classe B)</li>
+<li>192.168.0.0/16, che va quindi da 192.168.0.0 to 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
+</ul>
+<p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connttersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
+<h1><a class="header" href="#dimensionamento" id="dimensionamento">Dimensionamento</a></h1>
 <p>Dimensionamento di una rete... (es. ho 10 pc, quanto deve essere grande la sottorete?)</p>
-<p>ICANN...</p>
-<p>Conversione da notazione slash ad ottetti...</p>
-<p>Classi di indirizzi IP...</p>
 
                     </main>
 
@@ -290,6 +421,14 @@ p.img-container::after {
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         

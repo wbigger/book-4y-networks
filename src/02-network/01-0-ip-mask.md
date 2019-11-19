@@ -1,4 +1,4 @@
-### Indirizzi IP e maschere di sottorete
+# Indirizzi IP e maschere di sottorete
 L'indirizzo IP (IP sta per _Internet Protocol_) come detto è formato da 4 byte e viene rappresentato come segue:
 
 <p class="centered big-font">
@@ -16,7 +16,7 @@ Un indirizzo IP può rappresentare in alternativa una delle seguenti cose:
 
 Come già detto, ad un indirizzo IP è _sempre_ associata la subnet mask che indica la grandezza della rete a cui appartiene l'IP. Non può esistere un indirizzo IP senza subnet mask!
 
-### Indirizzo di rete
+## Indirizzo di rete
 Tutto parte con l'indirizzo che assegniamo ad una rete. Alcuni esempi di indirizzi di rete validi sono:
 - 10.0.0.0
 - 10.168.232.64
@@ -27,7 +27,7 @@ Attenzione: gli indirizzi di rete **non** possono essere assegnati a dispositivi
 
 Quanti dispositivi può contenere una rete? Dipende dal secondo numero fondamentale di cui abbiamo parlato, ovvero la maschera di sottorete.
 
-### Maschera di sottorete
+## Maschera di sottorete
 Come facciamo a dire quanti computer possono far parte di una rete? Ragioniamo su quale può essere un modo comodo.
 
 Sappiamo che, da come è stato concepito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.
@@ -40,7 +40,7 @@ Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bi
 
 In generale, la formula per calcolare la maschera di sottorete è:
 
-<p class="centered big-font">
+<p class="centered">
 <strong>
 maschera di sottorete: 32 - numero di bit per la dimensione della rete
 </strong>
@@ -54,15 +54,10 @@ Facciamo alcuni esempi validi di indirizzi di rete con subnet mask:
 - 192.168.43.0/24
 - 216.58.198.0/30
 
-##### Un caso particolare
+### Un caso particolare
 Prima di concludere, esaminiamo un caso particolare:
 - 0.0.0.0/0
 A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:
 - 0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto
 - /0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
 Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a **tutto Internet**!
-
-### Un po' di storia: maschere di sottorete classful e classless
-Prima di andare avanti, è necessario fare un approfondimento storico, per capire meglio il presente.
-
-Il metodo di contare le

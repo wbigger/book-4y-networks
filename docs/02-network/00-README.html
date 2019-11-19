@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="it" class="sidebar-visible no-js">
+<html lang="it" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -29,14 +29,16 @@
 
         <!-- Custom theme stylesheets -->
         
+        <link rel="stylesheet" href="../custom.css">
+        
 
         
     </head>
-    <body class="light">
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -60,8 +62,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -77,8 +82,8 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li><a href="../02-network/index.html" class="active"><strong aria-hidden="true">3.</strong> Network</a></li></ol>
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html" class="active"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-sizing.html"><strong aria-hidden="true">3.4.</strong> Dimensionamento</a></li><li class="expanded "><a href="../02-network/04-arp.html"><strong aria-hidden="true">3.5.</strong> ARP table</a></li><li class="expanded "><a href="../02-network/05-packet-travel.html"><strong aria-hidden="true">3.6.</strong> Packet traveling</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -117,6 +122,10 @@
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
                             
+                            <a href="https://github.com/wbigger/book-4y-networks/" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
                         </div>
                     </div>
                 </div>
@@ -146,13 +155,19 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#network-layer" id="network-layer">Network layer</a></h1>
-<p>Work in progress!</p>
-<p>Concetto di indirizzo IP...</p>
-<p>Rete e maschera di sottorete...</p>
-<p>Dimensionamento di una rete... (es. ho 10 pc, quanto deve essere grande la sottorete?)</p>
-<p>ICANN...</p>
-<p>Conversione da notazione slash ad ottetti...</p>
-<p>Classi di indirizzi IP...</p>
+<p>Finora abbiamo visto come collegare fra di loro un numero relativamente piccolo di computer, ovvero quelli collegabili ad un singolo switch. Per connettere ancora più computer, potremmo mettere degli switch a cascata, collegati tra di loro: si può fare, ma al crescere dei computer e degli switch, si cominciano ad avere una serie di problemi di inefficienza e sicurezza che devono essere risolti in altro modo. Entrano ora in gioco i concetti di rete e sottorete, in altre parole il &quot;network layer&quot;.</p>
+<h2><a class="header" href="#la-nascita-di-internet" id="la-nascita-di-internet">La nascita di Internet</a></h2>
+<p>Per far crescere il numero di computer connessi tra loro, dobbiamo dividerli in dei gruppi separati che comunicano tra di loro in modo controllato.</p>
+<p>La soluzione più utilizzata oggi è quella di assegnare un altro indirizzo ad ogni macchina, chiamato <em>IP Address</em>, formato da soli 4 byte, che lo identifica univocamente all'interno di una sottorete. A questo indirizzo viene sempre associato un altro numero, chiamato maschera di sottorete (<em>subnet mask</em>), anch'esso di 4 byte, che definisce la grandezza della sottorete in cui ci troviamo. Le reti sono connesse tra di loro da delle macchine dedicate, tipicamente dei <em>router</em> (instradatori). Questo sistema venne inventato agli inizi degli anni '70 e venne chiamato <strong>Internet</strong>, ed è proprio quello che utilizziamo oggi quotidianamente.</p>
+<p class="img-container">
+<img class="right_side w35p" title="vint-bob" alt="vint-bob" src="assets/vint-bob.jpg">
+<p>I padri fondatori di Internet sono considerati <a href="https://it.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a> e <a href="https://it.wikipedia.org/wiki/Robert_Kahn">Bob Kahn</a> che nel <strong>1972</strong> circa, mentre lavoravano presso il DARPA (Agenzia per i Progetti di ricerca avanzata per la Difesa), in America, hanno messo le basi per questa tecnologia ed i relativi protocolli.</p>
+</p>
+<blockquote>
+<p>Internet non è l'unico sistema che è nato negli anni 70, ma è quello che nel tempo ha preso il sopravvento rispetto a tutti gli altri.</p>
+</blockquote>
+<p>Internet si appoggia sul livello 2 della pila ISO/OSI (che <em>non</em> sostituisce!), e si colloca immediatamente sopra, quindi nel livello 3, che è appunto il livello di rete (network layer).</p>
+<p>Una nota sull'uso della parola &quot;Internet&quot;: tecnicamente, una qualsiasi rete di computer connessi tra di loro con indirizzo IP è una rete Internet. Tuttavia, nell'uso quotidiano usiamo questa parola per indicare la rete <em>globale</em> di computer. In questo testo si specificherà &quot;rete Internet globale&quot; quando necessario per evitare fraintendimenti.</p>
 
                     </main>
 
@@ -164,6 +179,10 @@
                             </a>
                         
 
+                        
+                            <a rel="next" href="../02-network/01-0-ip-mask.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -179,12 +198,24 @@
                 
 
                 
+                    <a href="../02-network/01-0-ip-mask.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
             </nav>
 
         </div>
 
         
 
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
         
 
         
