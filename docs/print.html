@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li></ol></li><li class="expanded "><a href="03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -268,21 +268,22 @@ p.img-container::after {
 <p>Il MAC spoofing può servire ad attaccare un sistema per intercettare informazioni che non sarebbero dirette a noi. Oppure possiamo usarlo per impedire di essere tracciati dal nostro operatore telefonico o dal gestore del WiFi, o ancora per usare una licenza di un software che era associata ad un altro computer.</p>
 <p>Il MAC spoofing, come molto spesso accade in informatica, non è legale od illegale <em>di per sé</em>. Dipende dall'uso che ne facciamo, e molto spesso il confine della legalità è molto sfumato e difficile da definire.</p>
 <h1><a class="header" href="#network-layer" id="network-layer">Network layer</a></h1>
-<p>Finora abbiamo visto come collegare fra di loro un numero relativamente piccolo di computer, ovvero quelli collegabili ad un singolo switch. Per connettere ancora più computer, potremmo mettere degli switch a cascata, collegati tra di loro: si può fare, ma al crescere dei computer e degli switch, si cominciano ad avere una serie di problemi di inefficienza e sicurezza che devono essere risolti in altro modo. Entrano ora in gioco i concetti di rete e sottorete, in altre parole il &quot;network layer&quot;.</p>
+<p>Finora abbiamo visto come mettere in comunicazione fra di loro un numero relativamente piccolo di computer, ovvero quelli che possono essere connessi ad un singolo switch. Per connettere ancora più computer, potremmo mettere degli switch a cascata, collegati tra di loro: si può fare, ma al crescere dei computer e degli switch, si cominciano ad avere una serie di problemi di inefficienza e sicurezza che devono essere risolti.</p>
+<p>Per creare reti di computer di grandi dimensini, la pila ISO/OSI introduce il concetti di <em>rete</em> e <em>sottorete</em>, e passiamo quindi al terzo livello, il &quot;network layer&quot;.</p>
 <h2><a class="header" href="#la-nascita-di-internet" id="la-nascita-di-internet">La nascita di Internet</a></h2>
-<p>Per far crescere il numero di computer connessi tra loro, dobbiamo dividerli in dei gruppi separati che comunicano tra di loro in modo controllato.</p>
-<p>La soluzione più utilizzata oggi è quella di assegnare un altro indirizzo ad ogni macchina, chiamato <em>IP Address</em>, formato da soli 4 byte, che lo identifica univocamente all'interno di una sottorete. A questo indirizzo viene sempre associato un altro numero, chiamato maschera di sottorete (<em>subnet mask</em>), anch'esso di 4 byte, che definisce la grandezza della sottorete in cui ci troviamo. Le reti sono connesse tra di loro da delle macchine dedicate, tipicamente dei <em>router</em> (instradatori). Questo sistema venne inventato agli inizi degli anni '70 e venne chiamato <strong>Internet</strong>, ed è proprio quello che utilizziamo oggi quotidianamente.</p>
+<p>La soluzione più utilizzata oggi è quella di assegnare un altro indirizzo ad ogni macchina, chiamato <strong>IP Address</strong>, formato da 4 byte, che lo identifica univocamente all'<em>interno di una sottorete</em>. All'indirizzo IP deve sempre essere associato un altro numero, chiamato maschera di sottorete (<strong>subnet mask</strong>), anch'esso di 4 byte, che definisce la grandezza della sottorete in cui ci troviamo. Le reti sono connesse tra di loro da dei dispositivi di rete dedicate, tipicamente dei <strong>router</strong> (instradatori). Questo sistema venne inventato agli inizi degli anni '70 e venne chiamato <strong>Internet</strong>, ed è proprio quello che utilizziamo oggi quotidianamente.</p>
 <p class="img-container">
 <img class="right_side w35p" title="vint-bob" alt="vint-bob" src="02-network/assets/vint-bob.jpg">
-<p>I padri fondatori di Internet sono considerati <a href="https://it.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a> e <a href="https://it.wikipedia.org/wiki/Robert_Kahn">Bob Kahn</a> che nel <strong>1972</strong> circa, mentre lavoravano presso il DARPA (Agenzia per i Progetti di ricerca avanzata per la Difesa), in America, hanno messo le basi per questa tecnologia ed i relativi protocolli.</p>
+<blockquote>
+<p>I padri fondatori di Internet sono <a href="https://it.wikipedia.org/wiki/Vint_Cerf">Vint Cerf</a> e <a href="https://it.wikipedia.org/wiki/Robert_Kahn">Bob Kahn</a> che nel <strong>1972</strong> circa, mentre lavoravano presso il DARPA (Agenzia per i Progetti di ricerca avanzata per la Difesa), in America, hanno messo le basi per questa tecnologia ed i relativi protocolli.</p>
+</blockquote>
 </p>
 <blockquote>
 <p>Internet non è l'unico sistema che è nato negli anni 70, ma è quello che nel tempo ha preso il sopravvento rispetto a tutti gli altri.</p>
 </blockquote>
-<p>Internet si appoggia sul livello 2 della pila ISO/OSI (che <em>non</em> sostituisce!), e si colloca immediatamente sopra, quindi nel livello 3, che è appunto il livello di rete (network layer).</p>
-<p>Una nota sull'uso della parola &quot;Internet&quot;: tecnicamente, una qualsiasi rete di computer connessi tra di loro con indirizzo IP è una rete Internet. Tuttavia, nell'uso quotidiano usiamo questa parola per indicare la rete <em>globale</em> di computer. In questo testo si specificherà &quot;rete Internet globale&quot; quando necessario per evitare fraintendimenti.</p>
+<p>Una nota sull'uso della parola &quot;Internet&quot;: tecnicamente, una qualsiasi rete di computer connessi tra di loro con indirizzi IP è una rete Internet. Tuttavia, nell'uso quotidiano usiamo questa parola per indicare la rete <em>globale</em> di computer. In questo testo si specificherà &quot;rete Internet globale&quot; quando necessario per evitare fraintendimenti.</p>
 <h1><a class="header" href="#indirizzi-ip-e-maschere-di-sottorete" id="indirizzi-ip-e-maschere-di-sottorete">Indirizzi IP e maschere di sottorete</a></h1>
-<p>L'indirizzo IP (IP sta per <em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
+<p>L'indirizzo IP (<em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
 <p class="centered xxl-font">
 <strong>
 172.16.254.1
@@ -295,7 +296,7 @@ p.img-container::after {
 <li>indirizzo IP che identifica un dispositivo appartenente ad una rete</li>
 <li>indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appertenenti ad una determinata rete.</li>
 </ul>
-<p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene l'IP. Non può esistere un indirizzo IP senza subnet mask!</p>
+<p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene. Non può esistere un indirizzo IP senza subnet mask!</p>
 <h2><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h2>
 <p>Tutto parte con l'indirizzo che assegniamo ad una rete. Alcuni esempi di indirizzi di rete validi sono:</p>
 <ul>
@@ -305,15 +306,15 @@ p.img-container::after {
 <li>216.58.198.0</li>
 </ul>
 <p>Attenzione: gli indirizzi di rete <strong>non</strong> possono essere assegnati a dispositivi, siano essi computer o router. Sono indirizzi che individuano la rete e non corrispondono a nessun oggetto fisico reale.</p>
-<p>Quanti dispositivi può contenere una rete? Dipende dal secondo numero fondamentale di cui abbiamo parlato, ovvero la maschera di sottorete.</p>
+<p>Quanti dispositivi può contenere una rete? Questo numero dipende dal secondo numero fondamentale a cui abbiamo accennato, ovvero la maschera di sottorete.</p>
 <h2><a class="header" href="#maschera-di-sottorete" id="maschera-di-sottorete">Maschera di sottorete</a></h2>
-<p>Come facciamo a dire quanti computer possono far parte di una rete? Ragioniamo su quale può essere un modo comodo.</p>
-<p>Sappiamo che, da come è stato concepito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
+<p>Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragioniare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.</p>
+<p>Sappiamo che, da come è stato definito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
 <blockquote>
-<p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato nel 2004 e si chiama IPv6, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, ma il suo effettivo utilizzo è al momento limitato ad alcuni settori di nicchia. Il suo futuro è legato, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
+<p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato alla fine degli anni '90 e si chiama <em>IPv6</em>, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, e viene regolarmente utilizzato anche se noi non ce ne accorgiamo. La sua ulteriore diffusione è legata, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
 </blockquote>
-<p>Per calcolare la dimensione minima di una rete bisogna prestare leggermente più attenzione. Nel caso limite, una rete è essere formata minimo da 2 computer. Una rete di un singolo computer infatti... non è una rete :) A questi due indirizzi assegnati ai computer dobbiamo aggiungere l'indirizzo IP della rete, e quello di broadcast. Abbiamo quindi un totale di 4 indirizzi IP per la rete più piccola possibile. Per identificare 4 indirizzi servono esattamente 2 bit.</p>
-<p>Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bit della parte <em>fissa</em> del nostro indirizzo IP, ovvero quella parte iniziale che non cambia. Una rete della massima grandezza <em>non</em> avrà una parte fissa, e quindi la maschera di sottorete sarà esattamente 0. Se invece noi abbiamo una rete con due soli computer, avremo solo gli ultimi 2 bit variabili, e la nostra maschera di sottorete sarà esattamente 30.</p>
+<p>Per calcolare la dimensione minima di una rete bisogna prestare leggermente più attenzione. Nel caso limite, una rete è formata da minimo 2 computer (una rete di un singolo computer infatti... non è una rete :)) Ai due indirizzi assegnati ai computer dobbiamo aggiungere l'indirizzo IP della rete e quello di broadcast. Abbiamo quindi bisogno di 4 indirizzi IP per la rete più piccola possibile. Per identificare 4 indirizzi servono esattamente 2 bit.</p>
+<p>Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bit della parte <em>fissa</em> del nostro indirizzo IP, ovvero quella parte iniziale che <em>non</em> cambia. Una rete della massima grandezza <em>non</em> avrà una parte fissa, e quindi la maschera di sottorete sarà esattamente 0. Se invece noi abbiamo una rete con due soli computer, avremo solo gli ultimi 2 bit variabili, e la nostra maschera di sottorete varrà 30.</p>
 <p>In generale, la formula per calcolare la maschera di sottorete è:</p>
 <p class="centered">
 <strong>
@@ -338,22 +339,22 @@ maschera di sottorete: 32 - numero di bit per la dimensione della rete
 <p>A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</p>
 <ul>
 <li>0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto</li>
-<li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
-Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Internet</strong>!</li>
+<li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi.
+Detto in altre parole, la rete 0.0.0.0/0 include <em>tutti gli indirizzi IP possibili</em> e corrisponde quindi a <em>tutto Internet</em>, sia esso locale o globale!</li>
 </ul>
 <h1><a class="header" href="#classful-e-classless" id="classful-e-classless">Classful e classless</a></h1>
 <p>Prima di andare avanti, è necessario fare un approfondimento storico, per capire meglio il presente.</p>
-<p>Il metodo che abbiamo visto di calcolare la maschera di sottorete utilizzando il numero esatto di bit, è attualmente lo standard e viene chiamato CIDR (Classless Inter-Domain Routing). Fate attenzione alla parola <em>classless</em>, che in italiano si può tradurre con &quot;senza classi&quot;: per capire a cosa si riferisce, bisogna addentrarsi un po' nella storia.</p>
+<p>Il metodo che abbiamo visto di calcolare la maschera di sottorete utilizzando il numero esatto di bit, è attualmente lo standard e viene chiamato CIDR (Classless Inter-Domain Routing). Fate attenzione alla parola <em>classless</em>, che in italiano si può tradurre con &quot;senza classi&quot;: per capire a cosa si riferisce, bisogna addentrarsi un po' nella storia degli indirizzi IP.</p>
 <h2><a class="header" href="#classi-di-indirizzi-ip" id="classi-di-indirizzi-ip">Classi di indirizzi IP</a></h2>
 <p>Quando è nato Internet, negli anni '70, la maschera di sottorete era unica e fissa per tutti gli indirizzi IP, ed era di 8 bit. C'erano quindi solo 254 reti, ognuna con circa 16 milioni di dispositivi.</p>
 <p>Quando negli anni '80 la tecnologia di Internet prese piede a livello mondiale, ci fu la necessità di mettere a disposizione un maggior numero di reti. Si decise quindi di cambiare un po' strategia e di assegnare delle maschere di rete in automatico in base ai primi bit dell'indirizzo IP.</p>
 <p>Decisero di divedere gli indirizi IP in tre <em>classi</em>:</p>
 <ul>
-<li><strong>classe A</strong>: il primo bit dell'indirizzo è 0, mantiene la maschera a 8 bit</li>
-<li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0, viene assegnata una maschera a 16 bit</li>
-<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0, viene assegnata una maschera a 24 bit</li>
+<li><strong>classe A</strong>: il primo bit dell'indirizzo è 0; in questo caso si mantiene la maschera a 8 bit</li>
+<li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0; in questo caso viene assegnata una maschera a 16 bit</li>
+<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0; in questo caso viene assegnata una maschera a 24 bit</li>
 </ul>
-<p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' si andò avanti così.</p>
+<p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' il problema dell'esaurimento delle reti fu arginato.</p>
 <blockquote>
 <p>Per completezza, esistono altre due classi, la D e la E, in base al valore del terzo e quarto bit. Noi non le tratteremo.</p>
 </blockquote>
@@ -368,10 +369,10 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <ol>
 <li>la rappresentazione è uguale a quella degli indirizzi IP, nonostante sia un concetto completamente diverso, portando quindi ad una certa confusione</li>
 <li>la rappresentazione è molto prolissa, quando viene scritta usa molti più caratteri di quanto potrebbero essere necessari</li>
-<li>ci sono potenzialmente molte maschere di sottorete non valide. Ad esempio le maschere 255.255.235.0, 255.255.0.255 non hanno senso e sono invalide. Questo, insieme al punto precedente, porta ad un maggior rischio di errori</li>
-<li>se il numero di bit della maschera non è moltiplo di 8 questa notazione diventa di difficile interpretazione. Ad esempio una maschera di 20 bit viene rappresentata come 255.255.240.0, ed una maschera di 14 bit come 255.252.0.0, e la conversione richiede un po' di calcoli e di pratica</li>
+<li>ci sono potenzialmente molte maschere di sottorete non valide. Ad esempio le maschere 255.255.235.0, 255.255.0.255 non hanno senso. Questo, insieme al punto precedente, porta ad un maggior rischio di errori</li>
+<li>se il numero di bit della maschera non è moltiplo di 8 questa notazione diventa di non immediata interpretazione. Ad esempio una maschera di 20 bit viene rappresentata come 255.255.240.0, ed una maschera di 14 bit come 255.252.0.0: calcolare la dimensione della rete richiede un po' di calcoli e di pratica</li>
 </ol>
-<p>Ad ogni modo, per diversi anni si è usata questa notazione e si trova molto spesso ancora in giro, quindi è di fondamentale importanza comprendere il significato di queste maschere e saper passare dalla notazione ad ottetti alla notazione slash e viceversa.</p>
+<p>Ad ogni modo, per molti anni si è usata questa notazione e si trova spesso ancora in uso, quindi è di fondamentale importanza comprendere il significato di queste maschere e saper passare dalla notazione ad ottetti alla notazione slash e viceversa.</p>
 <h2><a class="header" href="#indirizzi-ip-senza-classi" id="indirizzi-ip-senza-classi">Indirizzi IP senza classi</a></h2>
 <p>Il problema dell'assegnazione degli indirizzi si ripresentò verso la fine degli anni '80, in particolare per gli indirizzi di classe C: la nuova Internet Economy vedeva fiorire molte piccole aziende che avevano bisogno di pochi indirizzi IP, ma si trovavano costrette A pagare alte somme per avere un indirizzo di classe C, che per la maggior parte non utilizzavano.</p>
 <p>Per cui, agli inizi degli anni '90 si cambiò di nuovo sistema, abbandonando il concetto di classe: ogni indirizzo IP, indipendentemente dal suo valore numerico, poteva avere una qualsiasi maschera di sottorete. Si passò contestualmente anche alla notazione slash, più compatta e chiara, che è ancora lo standard attuale.</p>
@@ -381,12 +382,12 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <h2><a class="header" href="#passaggio-da-notazione-ad-ottetti-a-notazione-slash" id="passaggio-da-notazione-ad-ottetti-a-notazione-slash">Passaggio da notazione ad ottetti a notazione slash</a></h2>
 <p>È importante saper passare da una notazione all'altra, perché nella pratica le troverete tutte e due.</p>
 <h3><a class="header" href="#da-ottetti-a-slash" id="da-ottetti-a-slash">Da ottetti a slash</a></h3>
-<p>Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in slash. Prendiamo ad esempio la maschera <code>255.255.240.0</code>. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, 240, bisogna scomportlo in binario. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.</p>
-<p>Mi scrivo la seguente tabellina.</p>
+<p>Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in binario. Prendiamo ad esempio la maschera <code>255.255.240.0</code>. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, <code>240</code>, bisogna fare un po' di calcoli. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.</p>
+<p>Per scomporre un byte in binario, prima di tutto scrivo la seguente tabella.</p>
 <table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
 <tr><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
 </tbody></table>
-<p>Ora metto degli 1 in modo che la somma dei numeri che stanno sopra mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere 240, devo mettere 1 nelle prime quattro caselle.</p>
+<p>Ora metto degli 1 in modo che la somma dei numeri mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere <code>240</code>, devo mettere 1 nelle prime quattro caselle.</p>
 <table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
 <tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
 </tbody></table>
@@ -396,12 +397,9 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 </tbody></table>
 <p>Mi sono calcolato così che il numero <code>240</code> in decimale si converte in <code>11110000</code> in binario.</p>
 <p>Ora metto tutti gli ottetti in fila.</p>
-<p class="centered">
-<strong>
-255.255.255.0<br>
-11111111.11111111.11110000.00000000
-</strong>
-</p>
+<table><thead><tr><th align="center">255</th><th align="center">255</th><th align="center">240</th><th align="center">0</th></tr></thead><tbody>
+<tr><td align="center">11111111</td><td align="center">11111111</td><td align="center">11110000</td><td align="center">00000000</td></tr>
+</tbody></table>
 <p>Conto gli uno a partire dall'inizio, sono 8 + 8 + 4 = 20. Sono arrivato alla fine: la subnet mask in slash notation vale proprio 20!</p>
 <p class="centered xxl-font">
 <strong>
@@ -410,7 +408,7 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 </p>
 <h3><a class="header" href="#da-slash-a-ottetti" id="da-slash-a-ottetti">Da slash a ottetti</a></h3>
 <p>Bisogna fare l'operazione inversa del paragrafo precedente. Ipotizziamo di avere la subnet <code>\27</code>. Per convertirla in ottetti, metto 27 bit a 1 di fila, separandoli a gruppi di 8 bit.</p>
-<p class="centered xxl-font">
+<p class="centered large-font">
 <strong>
 11111111.11111111.11111111.11100000
 </strong>
@@ -425,41 +423,44 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 /27 -> 255.255.255.224
 </strong>
 </p>
-<h3><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h3>
+<blockquote>
+<p>Un utile sito per fare conversioni di questo genere è <a href="http://jodies.de/ipcalc">questo</a>. Non lo potete usarlo durante il compito, ma vi può tornare utile in futuro!</p>
+</blockquote>
+<h1><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h1>
 <p>Finora abbiamo parlato di reti ed indirizzi IP, ma la domanda sorge spontanea: quali indirizzi posso utilizzare io per la mia rete, e quali no? Come faccio a saperlo?</p>
-<p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, e nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>
+<p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>
 <p class="img-container">
 <img class="right_side w10" title="ICANN" alt="ICANN" src="02-network/assets/icann.png">
-<p>Ma se vogliamo connettere la nostra rete ad una rete più grande, magari all'Internet globale, c'è chiaramente bisogno di un organizzazione super partes che organizzasse le cose. Questa organizzazione si chiama <a href="https://www.icann.org/">ICANN</a> (Internet Corporation for Assigned Names and Numbers) che, come dice il nome, si occupa proprio di assegnare i nomi ed in numeri di Internet in maniera da non creare conflitti.</p>
+<p>Ma se vogliamo connettere la nostra rete ad una rete più grande, magari all'Internet globale, c'è chiaramente bisogno di un organizzazione super partes che organizzi le cose. Questa organizzazione si chiama <a href="https://www.icann.org/">ICANN</a> (Internet Corporation for Assigned Names and Numbers) che, come dice il nome, si occupa proprio di assegnare i nomi ed in numeri di Internet in maniera da non creare conflitti.</p>
 </p>
 <p>ICANN attualmente funziona nel seguente modo:</p>
 <ul>
 <li>assegna degli indirizzi pubblici agli Internet Service Provider (es. TIM, Vodafone, Fastweb, Linkem, Civitanet, Aruba, etc.) che ne fanno richiesta</li>
-<li>riserva alcuni indirizzi per utilizzi speciali, ad esempio per delle reti locali private</li>
+<li>riserva alcuni indirizzi per utilizzi speciali, ad esempio per le reti locali private</li>
 </ul>
 <blockquote>
-<p>A volte potete sentir parlare di <a href="https://www.iana.org/">IANA</a>(Internet Assigned Numbers Authority). Non è in contraddizione: lo IANA è una emanazione dell'ICANN, con lo specifico compito di gestire gli indirizzi IP.</p>
+<p>A volte può capitare di sentir parlare di [IANA] (https://www.iana.org/)(Internet Assigned Numbers Authority). Non è in contraddizione con quanto detto prima: IANA è una emanazione dell'ICANN, con lo specifico compito di gestire gli indirizzi IP.</p>
 </blockquote>
-<h4><a class="header" href="#indirizzi-di-reti-locali-private" id="indirizzi-di-reti-locali-private">Indirizzi di reti locali private</a></h4>
+<h2><a class="header" href="#indirizzi-di-reti-locali-private" id="indirizzi-di-reti-locali-private">Indirizzi di reti locali private</a></h2>
 <p>ICANN riserva i seguenti indirizzi da utilizzare per creare delle reti private all'interno della propria casa o della propria azienda:</p>
 <ul>
-<li>10.0.0.0/8, che va quindi da 10.0.0.0 a 10.255.255.255, con una maschera di sottorete di default di 8 bit (classe A)</li>
-<li>172.16.0.0/12, che va quindi da 172.16.0.0 a 172.31.255.255, con una maschera di sottorete di default di 16 bit (classe B)</li>
-<li>192.168.0.0/16, che va quindi da 192.168.0.0 to 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
+<li><strong>10.0.0.0/8</strong>, che va quindi da 10.0.0.0 a 10.255.255.255, con una maschera di sottorete di default di 8 bit (classe A)</li>
+<li><strong>172.16.0.0/12</strong>, che va quindi da 172.16.0.0 a 172.31.255.255, con una maschera di sottorete di default di 16 bit (classe B)</li>
+<li><strong>192.168.0.0/16</strong>, che va quindi da 192.168.0.0 a 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
 </ul>
-<p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connttersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
+<p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connettersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
 <h1><a class="header" href="#ip-addressing" id="ip-addressing">IP addressing</a></h1>
 <p>Ora abbiamo tutti gli strumenti essenziali per fare consapevolmente il nostro lavoro di sistemista!</p>
-<p>Nella pratica del lavoro di amministratore di rete, una delle prime e fondamentali competenze è saper creare correttamente reti e sottoreti. Non c'è necessariamente una scelta giusta ed una sbagliata: come al solito, dipende dalle esigenze del cliente, dai vincoli di spesa e da requisiti di sicurezza ed efficenza. Sicuramente però una adeguata scelta delle sottoreti permetterà di semplificare molto il lavoro in futuro, ed una scelta infelice può portare a notti insonni e malfunzionamenti. Gli alleati migliori in questo lavoro sono come al solito studio, esperienza e saper chiedere aiuto quando necessario :)</p>
+<p>Nella pratica del lavoro di un amministratore di rete, una delle prime e fondamentali competenze è saper creare correttamente reti e sottoreti. Non c'è necessariamente una scelta giusta ed una sbagliata: come al solito, dipende dalle esigenze del cliente, dai vincoli di spesa e da requisiti di sicurezza ed efficienza. Sicuramente però un'adeguata scelta delle sottoreti permetterà di semplificare molto il lavoro in futuro, ed una scelta infelice può portare a notti insonni e malfunzionamenti. Gli alleati migliori in questo lavoro sono come al solito studio, esperienza e saper chiedere aiuto quando necessario :)</p>
 <h2><a class="header" href="#esempio-di-indirizzamento" id="esempio-di-indirizzamento">Esempio di indirizzamento</a></h2>
-<p>Ipotizziamo che una scuola abbia appena messo in rete i propri computer, e ci chiede di assegnargli degli indirizzi IP. Non essendo connessi in rete prima, i PC non avevano nessun indirizzo, quindi dobbiamo cominciare da zero.</p>
+<p>Ipotizziamo che una scuola abbia appena messo in rete i propri computer e noi siamo i nuovi amministratori di rete. Per prima cosa, dobbiamo decidere come assegnare gli indirizzi IP.</p>
 <p>I PC della scuola sono così distribuiti:</p>
 <ul>
 <li>3 laboratori con 20 computer ognuno</li>
 <li>l'amministrazione usa 10 computer</li>
 <li>ci sono circa 100 docenti con ognuno uno o due dispositivi da connettere alla rete</li>
 </ul>
-<p>OK. Come caso iniziale semplificato, possiamo cominciare il nostro lavoro. Per ogni rete che identifichiamo, dobbiamo individuare semplicemente l'indirizzo di rete e la maschera di sottorete. Notiamo in questo momento che non ci interessa se i dispositivi sono connessi fisicamente via switch oppure sono connessi wireless con un access point. Nel nostro livello 3 della pila ISO/OSI, questo non ci importa. Detto questo...via!</p>
+<p>OK. Per ogni rete che identifichiamo, dobbiamo individuare l'indirizzo di rete e la maschera di sottorete. Faccio notare che in questo momento non ci interessa se i dispositivi siano connessi fisicamente via switch oppure siano wireless. Nel nostro livello 3 della pila ISO/OSI, questo non ci importa. Detto questo...via!</p>
 <p>Per prima cosa decidiamo di mettere ogni laboratorio in una propria sottorete, in modo che i docenti e gli assistenti di laboratorio possano trattarli in maniera indipendente. I computer dell' amministrazione ed i computer dei docenti sono altre due reti distinte, ed arriviamo quindi ad un totale di cinque reti. Per la rete dei docenti, ci conviene considerare il caso peggiore in cui tutti i docenti abbiamo due dispositivi: quindi consideriamo 200 host per il dimensionamento della rete.</p>
 <p>Dobbiamo in pratica riempire la seguente tabella:</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
@@ -469,9 +470,9 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <tr><td>10</td><td align="center"></td><td align="right"></td></tr>
 <tr><td>200</td><td align="center"></td><td align="right"></td></tr>
 </tbody></table>
-<h2><a class="header" href="#indirizzo-ip-di-partenza" id="indirizzo-ip-di-partenza">Indirizzo IP di partenza</a></h2>
+<h2><a class="header" href="#indirizzo-ip-della-rete" id="indirizzo-ip-della-rete">Indirizzo IP della rete</a></h2>
 <p>Dobbiamo decidere che indirizzo di partenza dobbiamo dare all'intera rete, considerando che poi tutte le reti saranno a partire da quella. Sicuramente useremo degli indirizzi IP privati, visto che i computer della scuola non dovranno essere singolarmente raggiungibili da internet, e quindi non necessitano di un indirizzo IP pubblico. Ma quale indirizzi usiamo?</p>
-<p>Visto che siamo una scuola, possiamo metterci comodi e scegliere di partire con gli indirizzi privati <code>10.0.0.0/8</code>, in modo da avere tutti gli indirizzi IP che ci servono.</p>
+<p>Visto che siamo una scuola, possiamo metterci comodi e scegliere di usare gli indirizzi privati <code>10.0.0.0/8</code>, in modo da avere tutti gli indirizzi IP che ci servono.</p>
 <p>A questo punto abbiamo davanti a noi due strade:</p>
 <ol>
 <li>fare un indirizzamento &quot;facile&quot;, in cui assegniamo a tutte le reti la stessa maschera</li>
@@ -479,10 +480,10 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 </ol>
 <p>Quale scegliere? Ovviamente... dipende. Se non ci sono particolari vincoli, può essere utile la prima scelta: più semplice e veloce, meno errori. Se invece vogliamo per qualche motivo risparmiare indirizzi IP, scegliamo sicuramente la seconda strada.</p>
 <p>Di seguito vediamo entrambi i casi.</p>
-<h2><a class="header" href="#caso-1-stessa-subnet-mask" id="caso-1-stessa-subnet-mask">Caso 1: stessa subnet mask</a></h2>
-<p>Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comodi, sceglieremo una maschera che sia un multiplo di 8, così tutti i conti ci vengono semplici.</p>
+<h2><a class="header" href="#caso-1-stessa-subnet-mask-per-tutte-le-reti" id="caso-1-stessa-subnet-mask-per-tutte-le-reti">Caso 1: stessa subnet mask per tutte le reti</a></h2>
+<p>Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comodi, scegliamo una maschera che sia un multiplo di 8, così tutti i conti ci vengono semplici.</p>
 <p>Quale subnet scegliamo? Dovendone scegliere una per tutte, prendiamo in considerazione quella con il maggior numero di host, in questo caso quella per i docenti: 200 computer.</p>
-<p>In questo caso si vede abbastanza facillmente che va bene una rete di classe C, cioé <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
+<p>Si vede abbastanza facilmente che va bene una rete di classe C, cioé <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
 <tr><td>20</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
 <tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/24</td></tr>
@@ -490,7 +491,7 @@ Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Inte
 <tr><td>10</td><td align="center">10.0.3.0</td><td align="right">/24</td></tr>
 <tr><td>200</td><td align="center">10.0.4.0</td><td align="right">/24</td></tr>
 </tbody></table>
-<h2><a class="header" href="#caso-2-subnet-minima" id="caso-2-subnet-minima">Caso 2: subnet minima</a></h2>
+<h2><a class="header" href="#caso-2-subnet-mask-minima-per-ogni-rete" id="caso-2-subnet-mask-minima-per-ogni-rete">Caso 2: subnet mask minima per ogni rete</a></h2>
 <p>In questo caso vogliamo invece calcolare per ogni rete la dimensione minima della subnet.</p>
 <p>Il primo passo che ci conviene fare è ordinare le reti dalla più grande alla più piccola, come segue.</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
@@ -514,9 +515,16 @@ numero IP = numero host + 2
 <tr><td>20</td><td align="center"></td><td align="right"></td></tr>
 <tr><td>10</td><td align="center"></td><td align="right"></td></tr>
 </tbody></table>
-<p>Per la prima rete del laboratorio, la prima cosa da fare è calcolare l'IP di partenza. Come facciamo? Dobbiamo calcolare il primo indirizzo IP libero dopo la rete precedente. Siccome la rete dei docenti parte da 10.0.0.0 e ha 256 IP, il primo indirizzo IP disponibile è 10.0.1.0.</p>
-<p>Per il calcolo della maschera, considerando che i laboratori hanno 20 computer, necessitano di <code>20 + 2 = 22</code> host. La potenza di due più vicina è 32, che corrisponde a 5 bit. La subnet è quindi <code>32 - 5 = 27 bits</code>.</p>
-<p>Ricapitolando, per il primo laboratorio la situazione è la seguente.</p>
+<p>Passiamo alla seconda rete. La prima cosa da fare è calcolare l'IP della rete. Come facciamo? Dobbiamo calcolare il primo indirizzo IP libero dopo la rete precedente. Siccome la rete dei docenti parte da 10.0.0.0 e ha 256 IP, il primo indirizzo IP disponibile è 10.0.1.0.</p>
+<table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
+<tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
+<tr><td>20</td><td align="center">10.0.1.0</td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>10</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+<p>Per il calcolo della maschera, considerando che i laboratori hanno 20 computer, abbiamo bisogno di <code>20 + 2 = 22</code> IP. La potenza di due più vicina è 32, che corrisponde a 5 bit. La subnet è quindi <code>32 - 5 = 27 bits</code>.</p>
+<p>Ricapitolando, per la seconda rete la situazione è la seguente.</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
 <tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
 <tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
@@ -532,7 +540,7 @@ numero IP = numero host + 2
 <tr><td>20</td><td align="center"></td><td align="right"></td></tr>
 <tr><td>10</td><td align="center"></td><td align="right"></td></tr>
 </tbody></table>
-<p>Ripetendo il ragionamento anche per il terzo laboratorio, arriviamo alla seguente situazione.</p>
+<p>Ripetendo il ragionamento anche per la quarta rete, arriviamo alla seguente situazione.</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
 <tr><td>200</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
 <tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/27</td></tr>
@@ -549,6 +557,7 @@ numero IP = numero host + 2
 <tr><td>10</td><td align="center">10.0.1.96</td><td align="right">/28</td></tr>
 </tbody></table>
 <h1><a class="header" href="#routing" id="routing">Routing</a></h1>
+<p>Nel capitolo precedente, abbiamo appreso le basi di networking: che cos'è un indirizzo IP, e come assegnarli a dei dispositivi.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYodcvhh7b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </main>

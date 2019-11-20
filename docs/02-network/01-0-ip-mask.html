@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html" class="active"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html" class="active"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -155,7 +155,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#indirizzi-ip-e-maschere-di-sottorete" id="indirizzi-ip-e-maschere-di-sottorete">Indirizzi IP e maschere di sottorete</a></h1>
-<p>L'indirizzo IP (IP sta per <em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
+<p>L'indirizzo IP (<em>Internet Protocol</em>) come detto è formato da 4 byte e viene rappresentato come segue:</p>
 <p class="centered xxl-font">
 <strong>
 172.16.254.1
@@ -168,7 +168,7 @@
 <li>indirizzo IP che identifica un dispositivo appartenente ad una rete</li>
 <li>indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appertenenti ad una determinata rete.</li>
 </ul>
-<p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene l'IP. Non può esistere un indirizzo IP senza subnet mask!</p>
+<p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene. Non può esistere un indirizzo IP senza subnet mask!</p>
 <h2><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h2>
 <p>Tutto parte con l'indirizzo che assegniamo ad una rete. Alcuni esempi di indirizzi di rete validi sono:</p>
 <ul>
@@ -178,15 +178,15 @@
 <li>216.58.198.0</li>
 </ul>
 <p>Attenzione: gli indirizzi di rete <strong>non</strong> possono essere assegnati a dispositivi, siano essi computer o router. Sono indirizzi che individuano la rete e non corrispondono a nessun oggetto fisico reale.</p>
-<p>Quanti dispositivi può contenere una rete? Dipende dal secondo numero fondamentale di cui abbiamo parlato, ovvero la maschera di sottorete.</p>
+<p>Quanti dispositivi può contenere una rete? Questo numero dipende dal secondo numero fondamentale a cui abbiamo accennato, ovvero la maschera di sottorete.</p>
 <h2><a class="header" href="#maschera-di-sottorete" id="maschera-di-sottorete">Maschera di sottorete</a></h2>
-<p>Come facciamo a dire quanti computer possono far parte di una rete? Ragioniamo su quale può essere un modo comodo.</p>
-<p>Sappiamo che, da come è stato concepito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
+<p>Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragioniare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.</p>
+<p>Sappiamo che, da come è stato definito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
 <blockquote>
-<p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato nel 2004 e si chiama IPv6, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, ma il suo effettivo utilizzo è al momento limitato ad alcuni settori di nicchia. Il suo futuro è legato, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
+<p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato alla fine degli anni '90 e si chiama <em>IPv6</em>, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, e viene regolarmente utilizzato anche se noi non ce ne accorgiamo. La sua ulteriore diffusione è legata, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
 </blockquote>
-<p>Per calcolare la dimensione minima di una rete bisogna prestare leggermente più attenzione. Nel caso limite, una rete è essere formata minimo da 2 computer. Una rete di un singolo computer infatti... non è una rete :) A questi due indirizzi assegnati ai computer dobbiamo aggiungere l'indirizzo IP della rete, e quello di broadcast. Abbiamo quindi un totale di 4 indirizzi IP per la rete più piccola possibile. Per identificare 4 indirizzi servono esattamente 2 bit.</p>
-<p>Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bit della parte <em>fissa</em> del nostro indirizzo IP, ovvero quella parte iniziale che non cambia. Una rete della massima grandezza <em>non</em> avrà una parte fissa, e quindi la maschera di sottorete sarà esattamente 0. Se invece noi abbiamo una rete con due soli computer, avremo solo gli ultimi 2 bit variabili, e la nostra maschera di sottorete sarà esattamente 30.</p>
+<p>Per calcolare la dimensione minima di una rete bisogna prestare leggermente più attenzione. Nel caso limite, una rete è formata da minimo 2 computer (una rete di un singolo computer infatti... non è una rete :)) Ai due indirizzi assegnati ai computer dobbiamo aggiungere l'indirizzo IP della rete e quello di broadcast. Abbiamo quindi bisogno di 4 indirizzi IP per la rete più piccola possibile. Per identificare 4 indirizzi servono esattamente 2 bit.</p>
+<p>Ora, attenzione: per convenzione la maschera di sottorete indica il numero di bit della parte <em>fissa</em> del nostro indirizzo IP, ovvero quella parte iniziale che <em>non</em> cambia. Una rete della massima grandezza <em>non</em> avrà una parte fissa, e quindi la maschera di sottorete sarà esattamente 0. Se invece noi abbiamo una rete con due soli computer, avremo solo gli ultimi 2 bit variabili, e la nostra maschera di sottorete varrà 30.</p>
 <p>In generale, la formula per calcolare la maschera di sottorete è:</p>
 <p class="centered">
 <strong>
@@ -211,8 +211,8 @@ maschera di sottorete: 32 - numero di bit per la dimensione della rete
 <p>A cosa corrisponde questa rete? Vediamo di analizzarla nel dettaglio:</p>
 <ul>
 <li>0.0.0.0 corrisponde al primo indirizzo IP disponibile in assoluto</li>
-<li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi
-Detto in altre parole quindi, la rete 0.0.0.0/0 corrisponde a <strong>tutto Internet</strong>!</li>
+<li>/0 significa che non ci sono bit fissi della rete, e quindi è tutta assegnabile a dei dispositivi.
+Detto in altre parole, la rete 0.0.0.0/0 include <em>tutti gli indirizzi IP possibili</em> e corrisponde quindi a <em>tutto Internet</em>, sia esso locale o globale!</li>
 </ul>
 
                     </main>

@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html" class="active"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html" class="active"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,29 +154,29 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h3><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h3>
+                        <h1><a class="header" href="#assegnazione-degli-indirizzi-di-rete" id="assegnazione-degli-indirizzi-di-rete">Assegnazione degli indirizzi di rete</a></h1>
 <p>Finora abbiamo parlato di reti ed indirizzi IP, ma la domanda sorge spontanea: quali indirizzi posso utilizzare io per la mia rete, e quali no? Come faccio a saperlo?</p>
-<p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, e nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>
+<p>La risposta è ovviamente...dipende. Nell'ipotesi in cui stessimo gestendo una rete completamente indipendente dal resto del mondo, potremmo scegliere gli indirizzi di rete che preferiamo, nessuno verrà a lamentarsi con noi, perché non diamo fastidio a nessuno.</p>
 <p class="img-container">
 <img class="right_side w10" title="ICANN" alt="ICANN" src="assets/icann.png">
-<p>Ma se vogliamo connettere la nostra rete ad una rete più grande, magari all'Internet globale, c'è chiaramente bisogno di un organizzazione super partes che organizzasse le cose. Questa organizzazione si chiama <a href="https://www.icann.org/">ICANN</a> (Internet Corporation for Assigned Names and Numbers) che, come dice il nome, si occupa proprio di assegnare i nomi ed in numeri di Internet in maniera da non creare conflitti.</p>
+<p>Ma se vogliamo connettere la nostra rete ad una rete più grande, magari all'Internet globale, c'è chiaramente bisogno di un organizzazione super partes che organizzi le cose. Questa organizzazione si chiama <a href="https://www.icann.org/">ICANN</a> (Internet Corporation for Assigned Names and Numbers) che, come dice il nome, si occupa proprio di assegnare i nomi ed in numeri di Internet in maniera da non creare conflitti.</p>
 </p>
 <p>ICANN attualmente funziona nel seguente modo:</p>
 <ul>
 <li>assegna degli indirizzi pubblici agli Internet Service Provider (es. TIM, Vodafone, Fastweb, Linkem, Civitanet, Aruba, etc.) che ne fanno richiesta</li>
-<li>riserva alcuni indirizzi per utilizzi speciali, ad esempio per delle reti locali private</li>
+<li>riserva alcuni indirizzi per utilizzi speciali, ad esempio per le reti locali private</li>
 </ul>
 <blockquote>
-<p>A volte potete sentir parlare di <a href="https://www.iana.org/">IANA</a>(Internet Assigned Numbers Authority). Non è in contraddizione: lo IANA è una emanazione dell'ICANN, con lo specifico compito di gestire gli indirizzi IP.</p>
+<p>A volte può capitare di sentir parlare di [IANA] (https://www.iana.org/)(Internet Assigned Numbers Authority). Non è in contraddizione con quanto detto prima: IANA è una emanazione dell'ICANN, con lo specifico compito di gestire gli indirizzi IP.</p>
 </blockquote>
-<h4><a class="header" href="#indirizzi-di-reti-locali-private" id="indirizzi-di-reti-locali-private">Indirizzi di reti locali private</a></h4>
+<h2><a class="header" href="#indirizzi-di-reti-locali-private" id="indirizzi-di-reti-locali-private">Indirizzi di reti locali private</a></h2>
 <p>ICANN riserva i seguenti indirizzi da utilizzare per creare delle reti private all'interno della propria casa o della propria azienda:</p>
 <ul>
-<li>10.0.0.0/8, che va quindi da 10.0.0.0 a 10.255.255.255, con una maschera di sottorete di default di 8 bit (classe A)</li>
-<li>172.16.0.0/12, che va quindi da 172.16.0.0 a 172.31.255.255, con una maschera di sottorete di default di 16 bit (classe B)</li>
-<li>192.168.0.0/16, che va quindi da 192.168.0.0 to 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
+<li><strong>10.0.0.0/8</strong>, che va quindi da 10.0.0.0 a 10.255.255.255, con una maschera di sottorete di default di 8 bit (classe A)</li>
+<li><strong>172.16.0.0/12</strong>, che va quindi da 172.16.0.0 a 172.31.255.255, con una maschera di sottorete di default di 16 bit (classe B)</li>
+<li><strong>192.168.0.0/16</strong>, che va quindi da 192.168.0.0 a 192.168.255.255, con una maschera di sottorete di default di 24 bit (classe C)</li>
 </ul>
-<p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connttersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
+<p>Chiunque può utilizzare questi indirizzi senza dover chiedere il permesso a qualcuno. Fate attenzione però: questi indirizzi <strong>non</strong> possono far parte della rete internet globale, ma devono connettersi tramite un router che da un lato avrà un indirizzo locale, e dall'altro un indirizzo globale fornito da un ISP.</p>
 
                     </main>
 

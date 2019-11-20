@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Network</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html" class="active"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-routing.html"><strong aria-hidden="true">3.5.</strong> Routing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html" class="active"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -156,17 +156,17 @@
                     <main>
                         <h1><a class="header" href="#classful-e-classless" id="classful-e-classless">Classful e classless</a></h1>
 <p>Prima di andare avanti, è necessario fare un approfondimento storico, per capire meglio il presente.</p>
-<p>Il metodo che abbiamo visto di calcolare la maschera di sottorete utilizzando il numero esatto di bit, è attualmente lo standard e viene chiamato CIDR (Classless Inter-Domain Routing). Fate attenzione alla parola <em>classless</em>, che in italiano si può tradurre con &quot;senza classi&quot;: per capire a cosa si riferisce, bisogna addentrarsi un po' nella storia.</p>
+<p>Il metodo che abbiamo visto di calcolare la maschera di sottorete utilizzando il numero esatto di bit, è attualmente lo standard e viene chiamato CIDR (Classless Inter-Domain Routing). Fate attenzione alla parola <em>classless</em>, che in italiano si può tradurre con &quot;senza classi&quot;: per capire a cosa si riferisce, bisogna addentrarsi un po' nella storia degli indirizzi IP.</p>
 <h2><a class="header" href="#classi-di-indirizzi-ip" id="classi-di-indirizzi-ip">Classi di indirizzi IP</a></h2>
 <p>Quando è nato Internet, negli anni '70, la maschera di sottorete era unica e fissa per tutti gli indirizzi IP, ed era di 8 bit. C'erano quindi solo 254 reti, ognuna con circa 16 milioni di dispositivi.</p>
 <p>Quando negli anni '80 la tecnologia di Internet prese piede a livello mondiale, ci fu la necessità di mettere a disposizione un maggior numero di reti. Si decise quindi di cambiare un po' strategia e di assegnare delle maschere di rete in automatico in base ai primi bit dell'indirizzo IP.</p>
 <p>Decisero di divedere gli indirizi IP in tre <em>classi</em>:</p>
 <ul>
-<li><strong>classe A</strong>: il primo bit dell'indirizzo è 0, mantiene la maschera a 8 bit</li>
-<li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0, viene assegnata una maschera a 16 bit</li>
-<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0, viene assegnata una maschera a 24 bit</li>
+<li><strong>classe A</strong>: il primo bit dell'indirizzo è 0; in questo caso si mantiene la maschera a 8 bit</li>
+<li><strong>classe B</strong>: il primo bit dell'indirizzo è 1 e il secondo 0; in questo caso viene assegnata una maschera a 16 bit</li>
+<li><strong>classe C</strong>: i primi due bit dell'indirizzo sono entrambi 1 ed il terzo a 0; in questo caso viene assegnata una maschera a 24 bit</li>
 </ul>
-<p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' si andò avanti così.</p>
+<p>In questo modo, il numero di reti assegnabili aumentò notevolmente e per un po' il problema dell'esaurimento delle reti fu arginato.</p>
 <blockquote>
 <p>Per completezza, esistono altre due classi, la D e la E, in base al valore del terzo e quarto bit. Noi non le tratteremo.</p>
 </blockquote>
@@ -181,10 +181,10 @@
 <ol>
 <li>la rappresentazione è uguale a quella degli indirizzi IP, nonostante sia un concetto completamente diverso, portando quindi ad una certa confusione</li>
 <li>la rappresentazione è molto prolissa, quando viene scritta usa molti più caratteri di quanto potrebbero essere necessari</li>
-<li>ci sono potenzialmente molte maschere di sottorete non valide. Ad esempio le maschere 255.255.235.0, 255.255.0.255 non hanno senso e sono invalide. Questo, insieme al punto precedente, porta ad un maggior rischio di errori</li>
-<li>se il numero di bit della maschera non è moltiplo di 8 questa notazione diventa di difficile interpretazione. Ad esempio una maschera di 20 bit viene rappresentata come 255.255.240.0, ed una maschera di 14 bit come 255.252.0.0, e la conversione richiede un po' di calcoli e di pratica</li>
+<li>ci sono potenzialmente molte maschere di sottorete non valide. Ad esempio le maschere 255.255.235.0, 255.255.0.255 non hanno senso. Questo, insieme al punto precedente, porta ad un maggior rischio di errori</li>
+<li>se il numero di bit della maschera non è moltiplo di 8 questa notazione diventa di non immediata interpretazione. Ad esempio una maschera di 20 bit viene rappresentata come 255.255.240.0, ed una maschera di 14 bit come 255.252.0.0: calcolare la dimensione della rete richiede un po' di calcoli e di pratica</li>
 </ol>
-<p>Ad ogni modo, per diversi anni si è usata questa notazione e si trova molto spesso ancora in giro, quindi è di fondamentale importanza comprendere il significato di queste maschere e saper passare dalla notazione ad ottetti alla notazione slash e viceversa.</p>
+<p>Ad ogni modo, per molti anni si è usata questa notazione e si trova spesso ancora in uso, quindi è di fondamentale importanza comprendere il significato di queste maschere e saper passare dalla notazione ad ottetti alla notazione slash e viceversa.</p>
 <h2><a class="header" href="#indirizzi-ip-senza-classi" id="indirizzi-ip-senza-classi">Indirizzi IP senza classi</a></h2>
 <p>Il problema dell'assegnazione degli indirizzi si ripresentò verso la fine degli anni '80, in particolare per gli indirizzi di classe C: la nuova Internet Economy vedeva fiorire molte piccole aziende che avevano bisogno di pochi indirizzi IP, ma si trovavano costrette A pagare alte somme per avere un indirizzo di classe C, che per la maggior parte non utilizzavano.</p>
 <p>Per cui, agli inizi degli anni '90 si cambiò di nuovo sistema, abbandonando il concetto di classe: ogni indirizzo IP, indipendentemente dal suo valore numerico, poteva avere una qualsiasi maschera di sottorete. Si passò contestualmente anche alla notazione slash, più compatta e chiara, che è ancora lo standard attuale.</p>
@@ -194,12 +194,12 @@
 <h2><a class="header" href="#passaggio-da-notazione-ad-ottetti-a-notazione-slash" id="passaggio-da-notazione-ad-ottetti-a-notazione-slash">Passaggio da notazione ad ottetti a notazione slash</a></h2>
 <p>È importante saper passare da una notazione all'altra, perché nella pratica le troverete tutte e due.</p>
 <h3><a class="header" href="#da-ottetti-a-slash" id="da-ottetti-a-slash">Da ottetti a slash</a></h3>
-<p>Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in slash. Prendiamo ad esempio la maschera <code>255.255.240.0</code>. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, 240, bisogna scomportlo in binario. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.</p>
-<p>Mi scrivo la seguente tabellina.</p>
+<p>Per passare da ottetti a slash, bisogna prima di tutto convertire ogni singolo ottetto in binario. Prendiamo ad esempio la maschera <code>255.255.240.0</code>. Il numero 255 è facilmente convertibile: sono otto bit tutti a 1. Per il terzo ottetto, <code>240</code>, bisogna fare un po' di calcoli. Ci sono vari metodi che avete studiato a TPSI; io uso il seguente modo semi-empirico, ma vanno tutti bene.</p>
+<p>Per scomporre un byte in binario, prima di tutto scrivo la seguente tabella.</p>
 <table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
 <tr><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
 </tbody></table>
-<p>Ora metto degli 1 in modo che la somma dei numeri che stanno sopra mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere 240, devo mettere 1 nelle prime quattro caselle.</p>
+<p>Ora metto degli 1 in modo che la somma dei numeri mi dia esattamente il numero che cerco. Nel nostro caso, per ottenere <code>240</code>, devo mettere 1 nelle prime quattro caselle.</p>
 <table><thead><tr><th align="center">128</th><th align="center">64</th><th align="center">32</th><th align="center">16</th><th align="center">8</th><th align="center">4</th><th align="center">2</th><th align="center">1</th></tr></thead><tbody>
 <tr><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">1</td><td align="center">_</td><td align="center">_</td><td align="center">_</td><td align="center">_</td></tr>
 </tbody></table>
@@ -209,12 +209,9 @@
 </tbody></table>
 <p>Mi sono calcolato così che il numero <code>240</code> in decimale si converte in <code>11110000</code> in binario.</p>
 <p>Ora metto tutti gli ottetti in fila.</p>
-<p class="centered">
-<strong>
-255.255.255.0<br>
-11111111.11111111.11110000.00000000
-</strong>
-</p>
+<table><thead><tr><th align="center">255</th><th align="center">255</th><th align="center">240</th><th align="center">0</th></tr></thead><tbody>
+<tr><td align="center">11111111</td><td align="center">11111111</td><td align="center">11110000</td><td align="center">00000000</td></tr>
+</tbody></table>
 <p>Conto gli uno a partire dall'inizio, sono 8 + 8 + 4 = 20. Sono arrivato alla fine: la subnet mask in slash notation vale proprio 20!</p>
 <p class="centered xxl-font">
 <strong>
@@ -223,7 +220,7 @@
 </p>
 <h3><a class="header" href="#da-slash-a-ottetti" id="da-slash-a-ottetti">Da slash a ottetti</a></h3>
 <p>Bisogna fare l'operazione inversa del paragrafo precedente. Ipotizziamo di avere la subnet <code>\27</code>. Per convertirla in ottetti, metto 27 bit a 1 di fila, separandoli a gruppi di 8 bit.</p>
-<p class="centered xxl-font">
+<p class="centered large-font">
 <strong>
 11111111.11111111.11111111.11100000
 </strong>
@@ -238,6 +235,9 @@
 /27 -> 255.255.255.224
 </strong>
 </p>
+<blockquote>
+<p>Un utile sito per fare conversioni di questo genere è <a href="http://jodies.de/ipcalc">questo</a>. Non lo potete usarlo durante il compito, ma vi può tornare utile in futuro!</p>
+</blockquote>
 
                     </main>
 
