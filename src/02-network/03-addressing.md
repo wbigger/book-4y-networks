@@ -43,7 +43,7 @@ Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comod
 
 Quale subnet scegliamo? Dovendone scegliere una per tutte, prendiamo in considerazione quella con il maggior numero di host, in questo caso quella per i docenti: 200 computer.
 
-Si vede abbastanza facilmente che va bene una rete di classe C, cioé `/24`, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.
+Si vede abbastanza facilmente che va bene una rete di classe C, cioè `/24`, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.
 
 | Numero host        | IP rete           | Subnet  |
 | ------------- |:-------------:| -----:|

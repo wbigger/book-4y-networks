@@ -12,7 +12,7 @@ Ognuno dei numeri rappresenta un byte e può quindi assumere un valore da 0 a 25
 Un indirizzo IP può rappresentare in alternativa una delle seguenti cose:
 - indirizzo IP che identifica una rete
 - indirizzo IP che identifica un dispositivo appartenente ad una rete
-- indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appertenenti ad una determinata rete.
+- indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appartenenti ad una determinata rete.
 
 Come già detto, ad un indirizzo IP è _sempre_ associata la subnet mask che indica la grandezza della rete a cui appartiene. Non può esistere un indirizzo IP senza subnet mask!
 
@@ -28,7 +28,7 @@ Attenzione: gli indirizzi di rete **non** possono essere assegnati a dispositivi
 Quanti dispositivi può contenere una rete? Questo numero dipende dal secondo numero fondamentale a cui abbiamo accennato, ovvero la maschera di sottorete.
 
 ## Maschera di sottorete
-Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragioniare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.
+Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragionare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.
 
 Sappiamo che, da come è stato definito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.
 
