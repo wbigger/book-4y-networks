@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="it" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>IP rete &amp; broadcast - Sistemi e Reti - 4y</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../custom.css">
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html" class="active"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="../04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="../04-transport/01-nat-pat.html"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Sistemi e Reti - 4y</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                            <a href="https://github.com/wbigger/book-4y-networks/" title="Git repository" aria-label="Git repository">
+                                <i id="git-repository-button" class="fa fa-github"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#calcolo-degli-indirizzi-di-rete-e-broadcast" id="calcolo-degli-indirizzi-di-rete-e-broadcast">Calcolo degli indirizzi di rete e broadcast</a></h1>
+<p>Quando abbiamo un host con un certo indirizzo IP ed una subnet mask, un'operazione che dobbiamo frequentemente fare è sapere l'indirizzo della rete alla quale appartiene ed il relativo indirizzo di broadcast.</p>
+<p>In questa sezione vedremo come fare.</p>
+<h2><a class="header" href="#classful" id="classful">Classful</a></h2>
+<p>Nel caso di indirizzamento classful, è facile calcolare l'indirizzo della rete e di broadcast.</p>
+<p>Ad esempio ipotizziamo di avere un host con il seguente IP e maschera:</p>
+<p class="centered">
+<strong>
+192.168.7.55/24
+</strong>
+</p>
+<p>È un indirizzo di classe C, quindi l'indirizzo di rete è il primo della classe e il broadcast l'ultimo.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>192.168.7.55/24</td><td align="center">192.168.7.0</td><td align="right">192.168.7.255</td></tr>
+</tbody></table>
+<p>Analogamente per la classe B e la classe A si ottengono risultati analoghi.
+Ipotizziamo di avere gli host con gli IP nella prima colonna, nelle altre due ci sono i relativi indirizzi di rete e broadcast.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>172.16.4.8/16</td><td align="center">172.16.0.0</td><td align="right">172.16.255.255</td></tr>
+<tr><td>10.12.0.44/8</td><td align="center">10.0.0.0</td><td align="right">10.255.255.255</td></tr>
+</tbody></table>
+<h2><a class="header" href="#classless" id="classless">Classless</a></h2>
+<p>Le cose diventano un po' più complesse quando abbiamo degli indirizzi classless: dobbiamo far ricorso ad un po' di matematica.</p>
+<p>Ipotizziamo lo stesso indirizzo di prima, ma con una diversa maschera di sottorete:</p>
+<p class="centered">
+<strong>
+192.168.7.55/28
+</strong>
+</p>
+<p>Per prima cosa dobbiamo convertire l'indirizzo IP dell'host in binario.</p>
+<table><thead><tr><th>Decimale</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>192</td><td align="center">--&gt;</td><td align="center">11000000</td></tr>
+<tr><td>168</td><td align="center">--&gt;</td><td align="center">10101000</td></tr>
+<tr><td>7</td><td align="center">--&gt;</td><td align="center">00000111</td></tr>
+<tr><td>55</td><td align="center">--&gt;</td><td align="center">00110111</td></tr>
+</tbody></table>
+<p>Che ci porta quindi ad avere il seguente risultato:</p>
+<table><thead><tr><th>IP</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>192.168.7.55</td><td align="center">--&gt;</td><td align="center">11000000 10101000 00000111 00110111</td></tr>
+</tbody></table>
+<p>Calcoliamo ora anche la maschera di sottorete in binario. È sufficiente mettere tanti 1 quanto il valore della maschera, e aggiungere 0 fino ad arrivare a 32.</p>
+<table><thead><tr><th>Subnet</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>/28</td><td align="center">--&gt;</td><td align="center">11111111 11111111 11111111 11110000</td></tr>
+</tbody></table>
+<p>Ora siamo pronti a calcolare indirizzo IP della rete e broadcast.</p>
+<h3><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h3>
+<p>Per l'indirizzo di rete,dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
+<p>La tabella di verità per l'operatore logico <code>AND</code> è il seguente:</p>
+<table><thead><tr><th>A</th><th align="center">B</th><th align="center">A and B</th></tr></thead><tbody>
+<tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>0</td><td align="center">1</td><td align="center">0</td></tr>
+<tr><td>1</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>1</td><td align="center">1</td><td align="center">1</td></tr>
+</tbody></table>
+<p>Quindi, abbiamo un valore 1 in uscita se e solo se entrambi i valori in ingresso sono 1.</p>
+<p>Effettuiamo ora l'operazione.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>11000000 10101000 00000111 00110111</td><td>AND</td></tr>
+<tr><td>11111111 11111111 11111111 11110000</td><td>=</td></tr>
+<tr><td>___________________________________</td><td></td></tr>
+<tr><td>11000000 10101000 00000111 00110000</td><td></td></tr>
+</tbody></table>
+<p>Bene, ci siamo quasi! Ora dobbiamo riconvertire da binario a decimale l'indirizzo appena calcolato, ed otteniamo il seguente risultato:</p>
+<p class="centered">
+<strong>
+IP di rete: 192.168.7.48
+</strong>
+</p>
+<h3><a class="header" href="#broadcast" id="broadcast">Broadcast</a></h3>
+<p>Ci manca di calcolare l'indirizzo di broadcast. Abbiamo diverse opzioni, ne propongo qui due.</p>
+<h4><a class="header" href="#metodo-empirico" id="metodo-empirico">Metodo empirico</a></h4>
+<p>Come prima possibilità, posso calcolare il numero di IP contenuti nella rete e sommare tale numero all'indirizzo IP della rete.</p>
+<p>Nel nostro caso, abbiamo una maschera /28, quindi il numero di IP disponibili nella rete è:</p>
+<p class="centered">
+2 ^ (32-28) = 2 ^ 4 = 16
+</p>
+<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete nel conto):</p>
+<p class="centered">
+(192.168.7.48 + 16 - 1) = 192.168.7.63
+</p>
+<p>Quindi l'indirizzo di broadcast è:</p>
+<p class="centered">
+<strong>
+IP di broadcast: 192.168.7.63
+</strong>
+</p>
+<h4><a class="header" href="#metodo-numerico" id="metodo-numerico">Metodo numerico</a></h4>
+<p>Posso effettuare anche un operazione logica per il calcolo del broadcast, simile a quello che abbiamo fatto prima per l'indirizzo di rete. Dobbiamo però usare l'operatore <code>OR</code> ed al posto della maschera di sottorete, il suo valore <em>negato</em>. Vediamo nel dettaglio.</p>
+<p>L'operatore logico <code>OR</code> ha la seguente tabella di verità.</p>
+<table><thead><tr><th>A</th><th align="center">B</th><th align="center">A or B</th></tr></thead><tbody>
+<tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>0</td><td align="center">1</td><td align="center">1</td></tr>
+<tr><td>1</td><td align="center">0</td><td align="center">1</td></tr>
+<tr><td>1</td><td align="center">1</td><td align="center">1</td></tr>
+</tbody></table>
+<p>Con l'operatore <code>OR</code>, abbiamo un valore 1 in uscita se uno dei due valori in ingresso è pari a 1.</p>
+<p>Inoltre, come detto, nella nostra operazione dobbiamo usare il valore <em>negato</em> della maschera di rete, ovvero dobbiamo invertire tutti gli 0 con 1 e viceversa. La negazione si chiama anche operatore <code>NOT</code>.</p>
+<table><thead><tr><th>Subnet mask</th><th align="center">NOT Subnet mask</th></tr></thead><tbody>
+<tr><td>11111111 11111111 11111111 11110000</td><td align="center">00000000 00000000 00000000 00001111</td></tr>
+</tbody></table>
+<p>Effettuiamo ora l'operazione.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>11000000 10101000 00000111 00110111</td><td>OR</td></tr>
+<tr><td>00000000 00000000 00000000 00001111</td><td>=</td></tr>
+<tr><td>___________________________________</td><td></td></tr>
+<tr><td>11000000 10101000 00000111 00111111</td><td></td></tr>
+</tbody></table>
+<p>Infine convertiamo da binario a decimale e otteniamo</p>
+<p class="centered">
+<strong>
+IP di broadcast: 192.168.7.63
+</strong>
+</p>
+<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o al valore della maschera di sottorete.</p>
+<h2><a class="header" href="#esercizi-di-preparazione" id="esercizi-di-preparazione">Esercizi di preparazione</a></h2>
+<p>Per prepararsi al compito, calcolare indirizzo IP di rete e di broadcast per i seguenti casi.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>192.168.0.122/24</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/26</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/28</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/23</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/24</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/26</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/28</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/23</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/20</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../02-network/03-addressing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../03-routing/00-README.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../02-network/03-addressing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../03-routing/00-README.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

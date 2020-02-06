@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li></ol></li><li class="expanded "><a href="03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="03-routing/02-ospf.html"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="04-transport/01-nat-pat.html"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -294,7 +294,7 @@ p.img-container::after {
 <ul>
 <li>indirizzo IP che identifica una rete</li>
 <li>indirizzo IP che identifica un dispositivo appartenente ad una rete</li>
-<li>indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appertenenti ad una determinata rete.</li>
+<li>indirizzo IP di broadcast, per comunicare facilmente con tutti i dispositivi appartenenti ad una determinata rete.</li>
 </ul>
 <p>Come già detto, ad un indirizzo IP è <em>sempre</em> associata la subnet mask che indica la grandezza della rete a cui appartiene. Non può esistere un indirizzo IP senza subnet mask!</p>
 <h2><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h2>
@@ -308,7 +308,7 @@ p.img-container::after {
 <p>Attenzione: gli indirizzi di rete <strong>non</strong> possono essere assegnati a dispositivi, siano essi computer o router. Sono indirizzi che individuano la rete e non corrispondono a nessun oggetto fisico reale.</p>
 <p>Quanti dispositivi può contenere una rete? Questo numero dipende dal secondo numero fondamentale a cui abbiamo accennato, ovvero la maschera di sottorete.</p>
 <h2><a class="header" href="#maschera-di-sottorete" id="maschera-di-sottorete">Maschera di sottorete</a></h2>
-<p>Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragioniare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.</p>
+<p>Come facciamo a sapere quanti computer possono far parte di una rete? Mettendoci nei panni dei creatori di Internet, proviamo a ragionare su quale potrebbe essere un metodo comodo per raggiungere questo scopo.</p>
 <p>Sappiamo che, da come è stato definito l'indirizzo IP, la grandezza massima teorica di una rete è 4 byte, quindi 32 bit (circa 4 miliardi di computer). Non è tecnicamente possibile avere reti IP più grandi.</p>
 <blockquote>
 <p>Per esattezza, esiste un altro standard IP che usa 16 byte per l'indirizzo e quindi può ospitare molti più computer. Questo standard è nato alla fine degli anni '90 e si chiama <em>IPv6</em>, è supportato ormai da tutti i sistemi operativi e dispositivi di rete, e viene regolarmente utilizzato anche se noi non ce ne accorgiamo. La sua ulteriore diffusione è legata, tra le altre cose, agli sviluppo del 5G e dell'Internet of Things. Vedremo cosa succederà! In questo capitolo noi ci occupiamo solo dello standard tradizionale, l'IPv4.</p>
@@ -483,7 +483,7 @@ Detto in altre parole, la rete 0.0.0.0/0 include <em>tutti gli indirizzi IP poss
 <h2><a class="header" href="#caso-1-stessa-subnet-mask-per-tutte-le-reti" id="caso-1-stessa-subnet-mask-per-tutte-le-reti">Caso 1: stessa subnet mask per tutte le reti</a></h2>
 <p>Scegliamo per tutti la stessa subnet mask. In più, per essere ancora più comodi, scegliamo una maschera che sia un multiplo di 8, così tutti i conti ci vengono semplici.</p>
 <p>Quale subnet scegliamo? Dovendone scegliere una per tutte, prendiamo in considerazione quella con il maggior numero di host, in questo caso quella per i docenti: 200 computer.</p>
-<p>Si vede abbastanza facilmente che va bene una rete di classe C, cioé <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
+<p>Si vede abbastanza facilmente che va bene una rete di classe C, cioè <code>/24</code>, che può contenere fino a 256 host. La nostra tabella può quindi essere riempita come segue.</p>
 <table><thead><tr><th>Numero host</th><th align="center">IP rete</th><th align="right">Subnet</th></tr></thead><tbody>
 <tr><td>20</td><td align="center">10.0.0.0</td><td align="right">/24</td></tr>
 <tr><td>20</td><td align="center">10.0.1.0</td><td align="right">/24</td></tr>
@@ -556,6 +556,134 @@ numero IP = numero host + 2
 <tr><td>20</td><td align="center">10.0.1.64</td><td align="right">/27</td></tr>
 <tr><td>10</td><td align="center">10.0.1.96</td><td align="right">/28</td></tr>
 </tbody></table>
+<h1><a class="header" href="#calcolo-degli-indirizzi-di-rete-e-broadcast" id="calcolo-degli-indirizzi-di-rete-e-broadcast">Calcolo degli indirizzi di rete e broadcast</a></h1>
+<p>Quando abbiamo un host con un certo indirizzo IP ed una subnet mask, un'operazione che dobbiamo frequentemente fare è sapere l'indirizzo della rete alla quale appartiene ed il relativo indirizzo di broadcast.</p>
+<p>In questa sezione vedremo come fare.</p>
+<h2><a class="header" href="#classful" id="classful">Classful</a></h2>
+<p>Nel caso di indirizzamento classful, è facile calcolare l'indirizzo della rete e di broadcast.</p>
+<p>Ad esempio ipotizziamo di avere un host con il seguente IP e maschera:</p>
+<p class="centered">
+<strong>
+192.168.7.55/24
+</strong>
+</p>
+<p>È un indirizzo di classe C, quindi l'indirizzo di rete è il primo della classe e il broadcast l'ultimo.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>192.168.7.55/24</td><td align="center">192.168.7.0</td><td align="right">192.168.7.255</td></tr>
+</tbody></table>
+<p>Analogamente per la classe B e la classe A si ottengono risultati analoghi.
+Ipotizziamo di avere gli host con gli IP nella prima colonna, nelle altre due ci sono i relativi indirizzi di rete e broadcast.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>172.16.4.8/16</td><td align="center">172.16.0.0</td><td align="right">172.16.255.255</td></tr>
+<tr><td>10.12.0.44/8</td><td align="center">10.0.0.0</td><td align="right">10.255.255.255</td></tr>
+</tbody></table>
+<h2><a class="header" href="#classless" id="classless">Classless</a></h2>
+<p>Le cose diventano un po' più complesse quando abbiamo degli indirizzi classless: dobbiamo far ricorso ad un po' di matematica.</p>
+<p>Ipotizziamo lo stesso indirizzo di prima, ma con una diversa maschera di sottorete:</p>
+<p class="centered">
+<strong>
+192.168.7.55/28
+</strong>
+</p>
+<p>Per prima cosa dobbiamo convertire l'indirizzo IP dell'host in binario.</p>
+<table><thead><tr><th>Decimale</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>192</td><td align="center">--&gt;</td><td align="center">11000000</td></tr>
+<tr><td>168</td><td align="center">--&gt;</td><td align="center">10101000</td></tr>
+<tr><td>7</td><td align="center">--&gt;</td><td align="center">00000111</td></tr>
+<tr><td>55</td><td align="center">--&gt;</td><td align="center">00110111</td></tr>
+</tbody></table>
+<p>Che ci porta quindi ad avere il seguente risultato:</p>
+<table><thead><tr><th>IP</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>192.168.7.55</td><td align="center">--&gt;</td><td align="center">11000000 10101000 00000111 00110111</td></tr>
+</tbody></table>
+<p>Calcoliamo ora anche la maschera di sottorete in binario. È sufficiente mettere tanti 1 quanto il valore della maschera, e aggiungere 0 fino ad arrivare a 32.</p>
+<table><thead><tr><th>Subnet</th><th align="center"></th><th align="center">Binario</th></tr></thead><tbody>
+<tr><td>/28</td><td align="center">--&gt;</td><td align="center">11111111 11111111 11111111 11110000</td></tr>
+</tbody></table>
+<p>Ora siamo pronti a calcolare indirizzo IP della rete e broadcast.</p>
+<h3><a class="header" href="#indirizzo-di-rete-1" id="indirizzo-di-rete-1">Indirizzo di rete</a></h3>
+<p>Per l'indirizzo di rete,dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
+<p>La tabella di verità per l'operatore logico <code>AND</code> è il seguente:</p>
+<table><thead><tr><th>A</th><th align="center">B</th><th align="center">A and B</th></tr></thead><tbody>
+<tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>0</td><td align="center">1</td><td align="center">0</td></tr>
+<tr><td>1</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>1</td><td align="center">1</td><td align="center">1</td></tr>
+</tbody></table>
+<p>Quindi, abbiamo un valore 1 in uscita se e solo se entrambi i valori in ingresso sono 1.</p>
+<p>Effettuiamo ora l'operazione.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>11000000 10101000 00000111 00110111</td><td>AND</td></tr>
+<tr><td>11111111 11111111 11111111 11110000</td><td>=</td></tr>
+<tr><td>___________________________________</td><td></td></tr>
+<tr><td>11000000 10101000 00000111 00110000</td><td></td></tr>
+</tbody></table>
+<p>Bene, ci siamo quasi! Ora dobbiamo riconvertire da binario a decimale l'indirizzo appena calcolato, ed otteniamo il seguente risultato:</p>
+<p class="centered">
+<strong>
+IP di rete: 192.168.7.48
+</strong>
+</p>
+<h3><a class="header" href="#broadcast" id="broadcast">Broadcast</a></h3>
+<p>Ci manca di calcolare l'indirizzo di broadcast. Abbiamo diverse opzioni, ne propongo qui due.</p>
+<h4><a class="header" href="#metodo-empirico" id="metodo-empirico">Metodo empirico</a></h4>
+<p>Come prima possibilità, posso calcolare il numero di IP contenuti nella rete e sommare tale numero all'indirizzo IP della rete.</p>
+<p>Nel nostro caso, abbiamo una maschera /28, quindi il numero di IP disponibili nella rete è:</p>
+<p class="centered">
+2 ^ (32-28) = 2 ^ 4 = 16
+</p>
+<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete nel conto):</p>
+<p class="centered">
+(192.168.7.48 + 16 - 1) = 192.168.7.63
+</p>
+<p>Quindi l'indirizzo di broadcast è:</p>
+<p class="centered">
+<strong>
+IP di broadcast: 192.168.7.63
+</strong>
+</p>
+<h4><a class="header" href="#metodo-numerico" id="metodo-numerico">Metodo numerico</a></h4>
+<p>Posso effettuare anche un operazione logica per il calcolo del broadcast, simile a quello che abbiamo fatto prima per l'indirizzo di rete. Dobbiamo però usare l'operatore <code>OR</code> ed al posto della maschera di sottorete, il suo valore <em>negato</em>. Vediamo nel dettaglio.</p>
+<p>L'operatore logico <code>OR</code> ha la seguente tabella di verità.</p>
+<table><thead><tr><th>A</th><th align="center">B</th><th align="center">A or B</th></tr></thead><tbody>
+<tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
+<tr><td>0</td><td align="center">1</td><td align="center">1</td></tr>
+<tr><td>1</td><td align="center">0</td><td align="center">1</td></tr>
+<tr><td>1</td><td align="center">1</td><td align="center">1</td></tr>
+</tbody></table>
+<p>Con l'operatore <code>OR</code>, abbiamo un valore 1 in uscita se uno dei due valori in ingresso è pari a 1.</p>
+<p>Inoltre, come detto, nella nostra operazione dobbiamo usare il valore <em>negato</em> della maschera di rete, ovvero dobbiamo invertire tutti gli 0 con 1 e viceversa. La negazione si chiama anche operatore <code>NOT</code>.</p>
+<table><thead><tr><th>Subnet mask</th><th align="center">NOT Subnet mask</th></tr></thead><tbody>
+<tr><td>11111111 11111111 11111111 11110000</td><td align="center">00000000 00000000 00000000 00001111</td></tr>
+</tbody></table>
+<p>Effettuiamo ora l'operazione.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>11000000 10101000 00000111 00110111</td><td>OR</td></tr>
+<tr><td>00000000 00000000 00000000 00001111</td><td>=</td></tr>
+<tr><td>___________________________________</td><td></td></tr>
+<tr><td>11000000 10101000 00000111 00111111</td><td></td></tr>
+</tbody></table>
+<p>Infine convertiamo da binario a decimale e otteniamo</p>
+<p class="centered">
+<strong>
+IP di broadcast: 192.168.7.63
+</strong>
+</p>
+<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o al valore della maschera di sottorete.</p>
+<h2><a class="header" href="#esercizi-di-preparazione" id="esercizi-di-preparazione">Esercizi di preparazione</a></h2>
+<p>Per prepararsi al compito, calcolare indirizzo IP di rete e di broadcast per i seguenti casi.</p>
+<table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
+<tr><td>192.168.0.122/24</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/26</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/28</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/23</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>192.168.0.122/20</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/24</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/26</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/28</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/23</td><td align="center"></td><td align="right"></td></tr>
+<tr><td>7.15.22.90/20</td><td align="center"></td><td align="right"></td></tr>
+</tbody></table>
 <h1><a class="header" href="#routing" id="routing">Routing</a></h1>
 <p>Nel capitolo precedente, abbiamo appreso le basi di networking: che cos'è un indirizzo IP, e come assegnarli a dei dispositivi.</p>
 <p>In questo capitolo parleremo di come far comunicare più reti fra di loro, analizzando diverse situazioni, dalle più semplici alle più complesse.</p>
@@ -565,6 +693,13 @@ numero IP = numero host + 2
 <p>È anche possibile mettere i sottotitoli tradotti automaticamente in italiano; la qualità è abbastanza buona ma, come consiglio personale, è generalmente meglio usare i sottotitoli in lingua originale. Inoltre ascoltare l'inglese e leggere i sottotitoli nella stessa lingua è un ottimo esercizio, considerando che questa lingua vi servirà quasi sicuramente per qualsiasi cosa decidiate di fare dopo, dal panettiere al manager d'industria.</p>
 </blockquote>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYodcvhh7b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h1><a class="header" href="#wan" id="wan">WAN</a></h1>
+<p>Consideriamo il caso in cui...</p>
+<h1><a class="header" href="#routing-1" id="routing-1">Routing</a></h1>
+<p>Un algoritmo per calcolare...</p>
+<h1><a class="header" href="#transport-layer" id="transport-layer">Transport Layer</a></h1>
+<h1><a class="header" href="#introduzione-a-nat--pat" id="introduzione-a-nat--pat">Introduzione a NAT &amp; PAT</a></h1>
+<p>Per risolvere il problema delle sottoreti...</p>
 
                     </main>
 

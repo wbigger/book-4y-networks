@@ -1,0 +1,3 @@
+# WAN
+
+Consideriamo il caso in cui...
