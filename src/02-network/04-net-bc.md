@@ -66,7 +66,7 @@ Ora siamo pronti a calcolare indirizzo IP della rete e broadcast.
 
 ### Indirizzo di rete
 
-Per l'indirizzo di rete,dobbiamo fare l'operazione logica `AND` tra l'indirizzo IP.
+Per l'indirizzo di rete, dobbiamo fare l'operazione logica `AND` tra l'indirizzo IP.
 
 La tabella di verità per l'operatore logico `AND` è il seguente:
 
@@ -108,13 +108,13 @@ Nel nostro caso, abbiamo una maschera /28, quindi il numero di IP disponibili ne
 2 ^ (32-28) = 2 ^ 4 = 16
 </p>
 
-Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete nel conto):
+Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete di partenza):
 
 <p class="centered">
-(192.168.7.48 + 16 - 1) = 192.168.7.63
+192.168.7.48 + 16 - 1 = 192.168.7.63
 </p>
 
-Quindi l'indirizzo di broadcast è:
+Da cui l'indirizzo di broadcast:
 <p class="centered">
 <strong>
 IP di broadcast: 192.168.7.63
@@ -142,7 +142,7 @@ Inoltre, come detto, nella nostra operazione dobbiamo usare il valore _negato_ d
 | 11111111 11111111 11111111 11110000 |00000000 00000000 00000000 00001111 |
 
 
-Effettuiamo ora l'operazione.
+Effettuiamo ora l'operazione `OR` tra l'indirizzo IP di partenza ed il valore negato della maschera di sottorete.
 
 |  |  |
 | ----------------------------------- | --- |
@@ -159,10 +159,10 @@ IP di broadcast: 192.168.7.63
 </strong>
 </p>
 
-Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o al valore della maschera di sottorete.
+Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o esperienze.
 
-## Esercizi di preparazione
-Per prepararsi al compito, calcolare indirizzo IP di rete e di broadcast per i seguenti casi.
+## Esercizi di preparazione al compito
+Per prepararsi al compito, Riempire la seguente tabella.
 
 | IP/subnet   | IP rete       | IP broadcast|
 | ------------- |:-------------:| -----:|

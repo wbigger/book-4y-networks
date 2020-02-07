@@ -693,8 +693,32 @@ IP di broadcast: 192.168.7.63
 <p>È anche possibile mettere i sottotitoli tradotti automaticamente in italiano; la qualità è abbastanza buona ma, come consiglio personale, è generalmente meglio usare i sottotitoli in lingua originale. Inoltre ascoltare l'inglese e leggere i sottotitoli nella stessa lingua è un ottimo esercizio, considerando che questa lingua vi servirà quasi sicuramente per qualsiasi cosa decidiate di fare dopo, dal panettiere al manager d'industria.</p>
 </blockquote>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYodcvhh7b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<h1><a class="header" href="#wan" id="wan">WAN</a></h1>
-<p>Consideriamo il caso in cui...</p>
+<h1><a class="header" href="#wide-area-networks" id="wide-area-networks">Wide Area Networks</a></h1>
+<h2><a class="header" href="#premessa" id="premessa">Premessa</a></h2>
+<p>Quando abbiamo fatto il subnetting, abbiamo considerato il caso di computer connessi all'interno di una <em>rete locale</em>, come ad esempio un'azienda, una scuola o un ospedale. In queste situazioni i dispositivi vengono disposti <em>a stella</em>, ovvero tanti computer connessi ad uno switch di primo livello, eventualmente tanti switch di primo livello connessi ad uno switch di secondo livello che poi finalmente arrivano ad un router per la connessione con il mondo esterno.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="ICANN" alt="ICANN" src="03-routing/assets/net-star.png">
+<figcaption class="centered">Rete locale, topologia a stella</figcaption>
+</p>
+<p>Questa configurazione è utile nel caso in cui ci sia un numero limitato di computer, e un amministratore di rete che tenga sotto controllo la situazione.</p>
+<p>Uno dei problemi principali di questa tipologia infatti è quello che viene definito il <em>single point of failure</em> (SPOF), che si può tradurre in italiano come &quot;singolo punto di vulnerabilità&quot;: se uno qualsiasi degli switch o il router si rompe, tutta o una parte significativa della perde funzionalità.</p>
+<p>Nel caso di rete molto grandi questo non è accettabile, vediamo come si risolve il problema.</p>
+<h2><a class="header" href="#concetti-generali-delle-wan" id="concetti-generali-delle-wan">Concetti generali delle WAN</a></h2>
+<p>Quando dobbiamo mettere in comunicazione tante reti locali fra di loro, ci troviamo in una situazione definita <em>rete geografica</em> o in inglese <em>wide area network</em> (WAN).</p>
+<p>In una WAN, i dispositivi che consideriamo non sono più PC o laptop, ma per la maggior parte sono router. Inoltre, non essendoci in generale una gerarchia precisa tra i vari router che formano la WAN, la topologia in questo caso è <em>a maglia</em> (in inglese <em>mesh</em>), come mostrato nella figura qui sotto.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="ICANN" alt="ICANN" src="03-routing/assets/net-mesh.png">
+<figcaption class="centered">Rete geografica, topologia a maglia</figcaption>
+</p>
+<p>Come si può vedere, anche il tipo di collegamento in una rete geografica è diverso rispetto ai dispositivi in una rete locale: dovendo di solito percorrere lunghe distanze, si usano collegamenti seriali (collegamenti rossi a zig zag in figura) o in fibra ottica (collegamenti rossi dritti).</p>
+<p>Per mandare un pacchetto da un router (o nodo) della rete ad un altro possono esistere diversi percorsi che passano attraverso diversi router e cavi. Come si può facilmente intuire, in questo contesto diventa critico sapere qual'è il percorso migliore tra due router. Come sempre, ci sono varie possibili soluzioni a questo problema, come illustrato di seguito.</p>
+<h2><a class="header" href="#configurazione-manuale-delle-tabelle-di-routing" id="configurazione-manuale-delle-tabelle-di-routing">Configurazione manuale delle tabelle di routing</a></h2>
+<p>Una possibile soluzione è configurare le tabelle di routing manualmente. Immaginiamo il seguente scenario.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="ICANN" alt="ICANN" src="03-routing/assets/net-manual.png">
+</p>
+<p>In questo caso, potremmo ad esempio manualmente configurare <code>Router1</code> per instradare i pacchetti diretti alla rete <code>192.168.1.0/24</code> attraverso il <code>Router4</code> perché sappiamo che i collegamenti sono in fibra ottica e quindi più veloci rispetto a quelli seriali.</p>
+<p>Come si può facilmente immaginare, però, al crescere delle dimensioni della rete può diventare impraticabile configurare tutti i router in modo manuale. Sono stati quindi ideati dei metodi alternativi in cui i router si configurano automaticamente dialogando tra loro.</p>
 <h1><a class="header" href="#routing-1" id="routing-1">Routing</a></h1>
 <p>Un algoritmo per calcolare...</p>
 <h1><a class="header" href="#transport-layer" id="transport-layer">Transport Layer</a></h1>

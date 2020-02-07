@@ -26,6 +26,15 @@ img.left_side {
   float:left;
   margin:5px 20px 0px 5px;
 }
+
+img.w100p {
+  width: 100%;
+}
+
+img.w80p {
+  width: 80%;
+}
+
 img.w50p {
   width: 50%;
 }
@@ -45,4 +54,9 @@ p.img-container::after {
   margin-bottom: 15px;
   overflow: hidden;
   clear: both;
+}
+
+figcaption {
+  font-size: medium;
+  font-style: italic; 
 }
