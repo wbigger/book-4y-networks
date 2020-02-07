@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html" class="active"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="../04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="../04-transport/01-nat-pat.html"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/00-recap.html"><strong aria-hidden="true">4.1.</strong> Riepilogo LAN</a></li><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.2.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html" class="active"><strong aria-hidden="true">4.3.</strong> OSPF</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,8 +154,101 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#routing" id="routing">Routing</a></h1>
-<p>Un algoritmo per calcolare...</p>
+                        <h1><a class="header" href="#protocolli-ed-algoritmi-di-routing" id="protocolli-ed-algoritmi-di-routing">Protocolli ed algoritmi di routing</a></h1>
+<p>Per poter fare in modo che un pacchetto raggiunga la destinazione seguendo un percorso ottimale, abbiamo bisogno di due ingredienti:</p>
+<ul>
+<li>un algoritmo matematico che definisca e calcoli il percorso ottimale</li>
+<li>un protocollo informatico che permetta ai router di scambiarsi le informazioni in modo efficiente e sicuro</li>
+</ul>
+<p>In questa pagina parleremo in particolare delle tecnologie relative al protocollo <em>Open Shortest Path First</em> (<em>OSPF</em>), che utilizza:</p>
+<ul>
+<li>l'algoritmo di Dijkstra per il calcolo del percorso minimo</li>
+<li>link state e flooding per scambiarsi le informazioni</li>
+</ul>
+<p>Vediamo queste cose più in dettaglio</p>
+<h2><a class="header" href="#algoritmo-di-dijkstra" id="algoritmo-di-dijkstra">Algoritmo di Dijkstra</a></h2>
+<p>Per la spiegazione di seguito potete anche usare <a href="http://graphonline.ru/en/?graph=qlBFcODimedbJpRq">questo grafo interattivo</a>.</p>
+<p>Questo algoritmo arriva alla distanza ottimale calcolando tutto l'albero dei cammini minimi tra un nodo e l'altro. I percorsi tra i nodi possono avere pesi differenti: il cammino minimo sarà quello la cui somma di tutti i percorsi ha il valore minore.</p>
+<p>Ipotizziamo il seguente grafo. In questi grafi, nella realtà ad ogni nodo corrisponde un server.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-1.png">
+</p>
+<p>Vogliamo andare da casa mia fino al server di FIFA Soccer. Cominciamo quindi con il calcolare la distanza di tutti i nodi da casa mia. </p>
+<p>Per prima cosa, calcolo la distanza tra casa mia e casa mia: la distanza è ovviamente 0.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-2.png">
+</p>
+<p>Adesso l'algoritmo richiede di:</p>
+<ol>
+<li>scegliere il nodo libero con distanza minore e lo &quot;blocco&quot; (nel nostro disegno lo coloro di rosso e metto un riquadro intorno al valore)</li>
+<li>calcolare il valore di tutti i nodi adiacenti ancora liberi</li>
+</ol>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-3.png">
+</p>
+<p>Adesso ripeto i passi 1 e 2 precedenti. Il nodo libero con valore più basso è <code>A</code>, lo blocco e assegno i valori ai nodi adiacenti. <strong>Importante</strong>: quando blocco un nodo, devo segnare con una freccetta il nodo da cui proviene il valore della distanza, in modo che alla fine posso facilmente ricostruire il percorso tra casa mia ed il server.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-4.png">
+</p>
+<p>A questo punto ripeto le operazioni precedenti finché non finisco <strong>tutti</strong> i nodi. Adesso il nodo libero con valore più basso è <code>C</code>, lo blocco e calcolo il valore dei nodi adiacenti. <strong>Attenzione</strong>: il valore del nodo era già stato calcolato: visto che sto cercando il percorso con il costo minimo, lo sostituisco solo se quello nuovo è più basso. In questo caso il nuovo valore passando da <code>C</code> è 6, quindi è più basso, e quindi sbarro il valore precedente e lo sostituisco con questo nuovo.</p>
+<blockquote>
+<p>Se capita che il nuovo valore è uguale al precedente, potete scegliere se sostituire il valore nuovo o lasciare quello vecchio, in entrambi i casi si calcola il percorso minimo. In generale comunque, consiglio di lasciare il valore vecchio in modo da dover fare meno cancellazioni e modifiche!</p>
+</blockquote>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-5.png">
+</p>
+<p>Ripeto l'iterazione, il nuovo nodo più basso è <code>D</code>, lo blocco e calcolo i nodi vicini.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-6.png">
+</p>
+<p>Ci siamo quasi...blocco <code>B</code> e vado avanti.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-7.png">
+</p>
+<p>A questo punto avrei calcolato un valore del nodo di destinazione, ma <em>continuo comunque</em> finché non blocco tutti i nodi.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-8.png">
+</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-9.png">
+</p>
+<p>Bene, ho finito!! Ho calcolato che il costo per arrivare al server di FIFA è 10 ed il percorso è <code>FIFA-&gt;E-&gt;C-&gt;A-&gt;My Home</code>.</p>
+<p>Notare che, una volta svolto l'algoritmo per un nodo, ho automaticamente il costo della distanza di <em>tutti</em> i nodi. Notare inoltre che questa distanza è sempre quella <em>ottimale</em>, ovvero sono certo che la distanza e il percorso sono quelli a costo minore fra tutti quelli possibili.</p>
+<p>Prima di concludere, copio in una la tabella il riepilogo di quanto calcolato finora.</p>
+<table><thead><tr><th align="center">Nodo</th><th align="center">Distanza da MyHome</th><th align="center">Nodo precedente</th></tr></thead><tbody>
+<tr><td align="center">MyHome</td><td align="center">0</td><td align="center"></td></tr>
+<tr><td align="center">A</td><td align="center">2</td><td align="center">MyHome</td></tr>
+<tr><td align="center">B</td><td align="center">8</td><td align="center">A</td></tr>
+<tr><td align="center">C</td><td align="center">4</td><td align="center">B</td></tr>
+<tr><td align="center">D</td><td align="center">6</td><td align="center">C</td></tr>
+<tr><td align="center">E</td><td align="center">9</td><td align="center">C</td></tr>
+<tr><td align="center">Fifa</td><td align="center">10</td><td align="center">E</td></tr>
+</tbody></table>
+<p>Come si può vedere, ogni nodo ha sempre <em>uno ed un solo</em> nodo di provenienza. Può capitare però, senza nessun problema, che un nodo possa avere <em>in ingresso</em> più di una freccia. Significa semplicemente che quel nodo è un passaggio per più percorsi.</p>
+<h3><a class="header" href="#metodo-alternativo" id="metodo-alternativo">Metodo alternativo</a></h3>
+<p>Se preferite, è possibile usare la tabella fin dall'inizio. In questo caso, dovete compilarla di pari passo con i passaggi dell'algoritmo, e aggiornarla man mano che procedete con le iterazioni. Vi consiglio di usare <a href="https://www.cs.usfca.edu/%7Egalles/visualization/Dijkstra.html">questo</a> sito per esercitarvi con questo metodo.</p>
+<p>Entrambi i metodi sono validi e, ovviamente, portano allo stesso risultato. Provateli entrambi e decidete qual'è il migliore per voi.</p>
+<blockquote>
+<p>Al compito in classe potrete usare il metodo che preferite.</p>
+</blockquote>
+<!-- da aggiungere: cenni al Link State Protocol di OSPF -->
+<h2><a class="header" href="#esercizi-di-preparazione-al-compito" id="esercizi-di-preparazione-al-compito">Esercizi di preparazione al compito</a></h2>
+<p>Calcolare le tabelle dei costi dei seguenti grafi:</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/d02.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/d03.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/d04.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/d05.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/d06.png">
+</p>
 
                     </main>
 
@@ -167,10 +260,6 @@
                             </a>
                         
 
-                        
-                            <a rel="next" href="../04-transport/00-README.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -185,10 +274,6 @@
                     </a>
                 
 
-                
-                    <a href="../04-transport/00-README.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

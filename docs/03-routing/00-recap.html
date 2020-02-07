@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NAT&amp;PAT - Sistemi e Reti - 4y</title>
+        <title>Riepilogo LAN - Sistemi e Reti - 4y</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="../04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="../04-transport/01-nat-pat.html" class="active"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/00-recap.html" class="active"><strong aria-hidden="true">4.1.</strong> Riepilogo LAN</a></li><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.2.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html"><strong aria-hidden="true">4.3.</strong> OSPF</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,19 +154,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#introduzione-a-nat--pat" id="introduzione-a-nat--pat">Introduzione a NAT &amp; PAT</a></h1>
-<p>Per risolvere il problema delle sottoreti...</p>
+                        <h1><a class="header" href="#breve-riepilogo-sulle-reti-locali" id="breve-riepilogo-sulle-reti-locali">Breve riepilogo sulle reti locali</a></h1>
+<p>Quando abbiamo fatto il subnetting, abbiamo considerato il caso di computer connessi all'interno di una <em>rete locale</em>, come ad esempio un'azienda, una scuola o un ospedale. In queste situazioni i dispositivi vengono disposti <em>a stella</em>, ovvero tanti computer connessi ad uno switch di primo livello, eventualmente tanti switch di primo livello connessi ad uno switch di secondo livello che poi finalmente arrivano ad un router per la connessione con il mondo esterno.</p>
+<p class="centered img-container">
+<img class="centered w80p" title="ICANN" alt="ICANN" src="assets/net-star.png">
+<figcaption class="centered">Rete locale, topologia a stella</figcaption>
+</p>
+<p>Questa configurazione è utile nel caso in cui ci sia un numero limitato di computer, e un amministratore di rete che tenga sotto controllo la situazione.</p>
+<p>Uno dei problemi principali di questa tipologia infatti è quello che viene definito il <a href="https://it.wikipedia.org/wiki/Single_point_of_failure"><em>single point of failure</em></a> (SPOF), che si può tradurre in italiano come &quot;singolo punto di vulnerabilità&quot;: se uno qualsiasi degli switch o il router si rompe, tutta o una parte significativa della perde funzionalità.</p>
+<p>Nel caso di rete molto grandi questo non è accettabile, vediamo come si risolve il problema.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../04-transport/00-README.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../03-routing/00-README.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
+                        
+                            <a rel="next" href="../03-routing/01-wan.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -176,11 +187,15 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="../04-transport/00-README.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="../03-routing/00-README.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
+                
+                    <a href="../03-routing/01-wan.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                 
             </nav>
 

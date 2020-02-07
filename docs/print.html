@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="03-routing/02-ospf.html"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="04-transport/01-nat-pat.html"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="02-network/04-net-bc.html"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="03-routing/00-recap.html"><strong aria-hidden="true">4.1.</strong> Riepilogo LAN</a></li><li class="expanded "><a href="03-routing/01-wan.html"><strong aria-hidden="true">4.2.</strong> WAN</a></li><li class="expanded "><a href="03-routing/02-ospf.html"><strong aria-hidden="true">4.3.</strong> OSPF</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -602,7 +602,7 @@ Ipotizziamo di avere gli host con gli IP nella prima colonna, nelle altre due ci
 </tbody></table>
 <p>Ora siamo pronti a calcolare indirizzo IP della rete e broadcast.</p>
 <h3><a class="header" href="#indirizzo-di-rete-1" id="indirizzo-di-rete-1">Indirizzo di rete</a></h3>
-<p>Per l'indirizzo di rete,dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
+<p>Per l'indirizzo di rete, dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
 <p>La tabella di verità per l'operatore logico <code>AND</code> è il seguente:</p>
 <table><thead><tr><th>A</th><th align="center">B</th><th align="center">A and B</th></tr></thead><tbody>
 <tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
@@ -632,11 +632,11 @@ IP di rete: 192.168.7.48
 <p class="centered">
 2 ^ (32-28) = 2 ^ 4 = 16
 </p>
-<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete nel conto):</p>
+<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete di partenza):</p>
 <p class="centered">
-(192.168.7.48 + 16 - 1) = 192.168.7.63
+192.168.7.48 + 16 - 1 = 192.168.7.63
 </p>
-<p>Quindi l'indirizzo di broadcast è:</p>
+<p>Da cui l'indirizzo di broadcast:</p>
 <p class="centered">
 <strong>
 IP di broadcast: 192.168.7.63
@@ -656,7 +656,7 @@ IP di broadcast: 192.168.7.63
 <table><thead><tr><th>Subnet mask</th><th align="center">NOT Subnet mask</th></tr></thead><tbody>
 <tr><td>11111111 11111111 11111111 11110000</td><td align="center">00000000 00000000 00000000 00001111</td></tr>
 </tbody></table>
-<p>Effettuiamo ora l'operazione.</p>
+<p>Effettuiamo ora l'operazione <code>OR</code> tra l'indirizzo IP di partenza ed il valore negato della maschera di sottorete.</p>
 <table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td>11000000 10101000 00000111 00110111</td><td>OR</td></tr>
 <tr><td>00000000 00000000 00000000 00001111</td><td>=</td></tr>
@@ -669,9 +669,9 @@ IP di broadcast: 192.168.7.63
 IP di broadcast: 192.168.7.63
 </strong>
 </p>
-<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o al valore della maschera di sottorete.</p>
-<h2><a class="header" href="#esercizi-di-preparazione" id="esercizi-di-preparazione">Esercizi di preparazione</a></h2>
-<p>Per prepararsi al compito, calcolare indirizzo IP di rete e di broadcast per i seguenti casi.</p>
+<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o esperienze.</p>
+<h2><a class="header" href="#esercizi-di-preparazione-al-compito" id="esercizi-di-preparazione-al-compito">Esercizi di preparazione al compito</a></h2>
+<p>Per prepararsi al compito, Riempire la seguente tabella.</p>
 <table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
 <tr><td>192.168.0.122/24</td><td align="center"></td><td align="right"></td></tr>
 <tr><td>192.168.0.122/26</td><td align="center"></td><td align="right"></td></tr>
@@ -693,24 +693,23 @@ IP di broadcast: 192.168.7.63
 <p>È anche possibile mettere i sottotitoli tradotti automaticamente in italiano; la qualità è abbastanza buona ma, come consiglio personale, è generalmente meglio usare i sottotitoli in lingua originale. Inoltre ascoltare l'inglese e leggere i sottotitoli nella stessa lingua è un ottimo esercizio, considerando che questa lingua vi servirà quasi sicuramente per qualsiasi cosa decidiate di fare dopo, dal panettiere al manager d'industria.</p>
 </blockquote>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rYodcvhh7b8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<h1><a class="header" href="#wide-area-networks" id="wide-area-networks">Wide Area Networks</a></h1>
-<h2><a class="header" href="#premessa" id="premessa">Premessa</a></h2>
+<h1><a class="header" href="#breve-riepilogo-sulle-reti-locali" id="breve-riepilogo-sulle-reti-locali">Breve riepilogo sulle reti locali</a></h1>
 <p>Quando abbiamo fatto il subnetting, abbiamo considerato il caso di computer connessi all'interno di una <em>rete locale</em>, come ad esempio un'azienda, una scuola o un ospedale. In queste situazioni i dispositivi vengono disposti <em>a stella</em>, ovvero tanti computer connessi ad uno switch di primo livello, eventualmente tanti switch di primo livello connessi ad uno switch di secondo livello che poi finalmente arrivano ad un router per la connessione con il mondo esterno.</p>
 <p class="centered img-container">
 <img class="centered w80p" title="ICANN" alt="ICANN" src="03-routing/assets/net-star.png">
 <figcaption class="centered">Rete locale, topologia a stella</figcaption>
 </p>
 <p>Questa configurazione è utile nel caso in cui ci sia un numero limitato di computer, e un amministratore di rete che tenga sotto controllo la situazione.</p>
-<p>Uno dei problemi principali di questa tipologia infatti è quello che viene definito il <em>single point of failure</em> (SPOF), che si può tradurre in italiano come &quot;singolo punto di vulnerabilità&quot;: se uno qualsiasi degli switch o il router si rompe, tutta o una parte significativa della perde funzionalità.</p>
+<p>Uno dei problemi principali di questa tipologia infatti è quello che viene definito il <a href="https://it.wikipedia.org/wiki/Single_point_of_failure"><em>single point of failure</em></a> (SPOF), che si può tradurre in italiano come &quot;singolo punto di vulnerabilità&quot;: se uno qualsiasi degli switch o il router si rompe, tutta o una parte significativa della perde funzionalità.</p>
 <p>Nel caso di rete molto grandi questo non è accettabile, vediamo come si risolve il problema.</p>
-<h2><a class="header" href="#concetti-generali-delle-wan" id="concetti-generali-delle-wan">Concetti generali delle WAN</a></h2>
+<h1><a class="header" href="#wide-area-networks" id="wide-area-networks">Wide Area Networks</a></h1>
 <p>Quando dobbiamo mettere in comunicazione tante reti locali fra di loro, ci troviamo in una situazione definita <em>rete geografica</em> o in inglese <em>wide area network</em> (WAN).</p>
 <p>In una WAN, i dispositivi che consideriamo non sono più PC o laptop, ma per la maggior parte sono router. Inoltre, non essendoci in generale una gerarchia precisa tra i vari router che formano la WAN, la topologia in questo caso è <em>a maglia</em> (in inglese <em>mesh</em>), come mostrato nella figura qui sotto.</p>
 <p class="centered img-container">
 <img class="centered w80p" title="ICANN" alt="ICANN" src="03-routing/assets/net-mesh.png">
 <figcaption class="centered">Rete geografica, topologia a maglia</figcaption>
 </p>
-<p>Come si può vedere, anche il tipo di collegamento in una rete geografica è diverso rispetto ai dispositivi in una rete locale: dovendo di solito percorrere lunghe distanze, si usano collegamenti seriali (collegamenti rossi a zig zag in figura) o in fibra ottica (collegamenti rossi dritti).</p>
+<p>Come si può vedere, anche il cavo per i collegamenti in una rete geografica sono diverso rispetto ai dispositivi in una rete locale: dovendo di solito percorrere lunghe distanze, non si usano cavi LAN ma cavi seriali (rossi a zig zag in figura) o in fibra ottica (rossi dritti).</p>
 <p>Per mandare un pacchetto da un router (o nodo) della rete ad un altro possono esistere diversi percorsi che passano attraverso diversi router e cavi. Come si può facilmente intuire, in questo contesto diventa critico sapere qual'è il percorso migliore tra due router. Come sempre, ci sono varie possibili soluzioni a questo problema, come illustrato di seguito.</p>
 <h2><a class="header" href="#configurazione-manuale-delle-tabelle-di-routing" id="configurazione-manuale-delle-tabelle-di-routing">Configurazione manuale delle tabelle di routing</a></h2>
 <p>Una possibile soluzione è configurare le tabelle di routing manualmente. Immaginiamo il seguente scenario.</p>
@@ -719,11 +718,101 @@ IP di broadcast: 192.168.7.63
 </p>
 <p>In questo caso, potremmo ad esempio manualmente configurare <code>Router1</code> per instradare i pacchetti diretti alla rete <code>192.168.1.0/24</code> attraverso il <code>Router4</code> perché sappiamo che i collegamenti sono in fibra ottica e quindi più veloci rispetto a quelli seriali.</p>
 <p>Come si può facilmente immaginare, però, al crescere delle dimensioni della rete può diventare impraticabile configurare tutti i router in modo manuale. Sono stati quindi ideati dei metodi alternativi in cui i router si configurano automaticamente dialogando tra loro.</p>
-<h1><a class="header" href="#routing-1" id="routing-1">Routing</a></h1>
-<p>Un algoritmo per calcolare...</p>
-<h1><a class="header" href="#transport-layer" id="transport-layer">Transport Layer</a></h1>
-<h1><a class="header" href="#introduzione-a-nat--pat" id="introduzione-a-nat--pat">Introduzione a NAT &amp; PAT</a></h1>
-<p>Per risolvere il problema delle sottoreti...</p>
+<h1><a class="header" href="#protocolli-ed-algoritmi-di-routing" id="protocolli-ed-algoritmi-di-routing">Protocolli ed algoritmi di routing</a></h1>
+<p>Per poter fare in modo che un pacchetto raggiunga la destinazione seguendo un percorso ottimale, abbiamo bisogno di due ingredienti:</p>
+<ul>
+<li>un algoritmo matematico che definisca e calcoli il percorso ottimale</li>
+<li>un protocollo informatico che permetta ai router di scambiarsi le informazioni in modo efficiente e sicuro</li>
+</ul>
+<p>In questa pagina parleremo in particolare delle tecnologie relative al protocollo <em>Open Shortest Path First</em> (<em>OSPF</em>), che utilizza:</p>
+<ul>
+<li>l'algoritmo di Dijkstra per il calcolo del percorso minimo</li>
+<li>link state e flooding per scambiarsi le informazioni</li>
+</ul>
+<p>Vediamo queste cose più in dettaglio</p>
+<h2><a class="header" href="#algoritmo-di-dijkstra" id="algoritmo-di-dijkstra">Algoritmo di Dijkstra</a></h2>
+<p>Per la spiegazione di seguito potete anche usare <a href="http://graphonline.ru/en/?graph=qlBFcODimedbJpRq">questo grafo interattivo</a>.</p>
+<p>Questo algoritmo arriva alla distanza ottimale calcolando tutto l'albero dei cammini minimi tra un nodo e l'altro. I percorsi tra i nodi possono avere pesi differenti: il cammino minimo sarà quello la cui somma di tutti i percorsi ha il valore minore.</p>
+<p>Ipotizziamo il seguente grafo. In questi grafi, nella realtà ad ogni nodo corrisponde un server.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-1.png">
+</p>
+<p>Vogliamo andare da casa mia fino al server di FIFA Soccer. Cominciamo quindi con il calcolare la distanza di tutti i nodi da casa mia. </p>
+<p>Per prima cosa, calcolo la distanza tra casa mia e casa mia: la distanza è ovviamente 0.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-2.png">
+</p>
+<p>Adesso l'algoritmo richiede di:</p>
+<ol>
+<li>scegliere il nodo libero con distanza minore e lo &quot;blocco&quot; (nel nostro disegno lo coloro di rosso e metto un riquadro intorno al valore)</li>
+<li>calcolare il valore di tutti i nodi adiacenti ancora liberi</li>
+</ol>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-3.png">
+</p>
+<p>Adesso ripeto i passi 1 e 2 precedenti. Il nodo libero con valore più basso è <code>A</code>, lo blocco e assegno i valori ai nodi adiacenti. <strong>Importante</strong>: quando blocco un nodo, devo segnare con una freccetta il nodo da cui proviene il valore della distanza, in modo che alla fine posso facilmente ricostruire il percorso tra casa mia ed il server.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-4.png">
+</p>
+<p>A questo punto ripeto le operazioni precedenti finché non finisco <strong>tutti</strong> i nodi. Adesso il nodo libero con valore più basso è <code>C</code>, lo blocco e calcolo il valore dei nodi adiacenti. <strong>Attenzione</strong>: il valore del nodo era già stato calcolato: visto che sto cercando il percorso con il costo minimo, lo sostituisco solo se quello nuovo è più basso. In questo caso il nuovo valore passando da <code>C</code> è 6, quindi è più basso, e quindi sbarro il valore precedente e lo sostituisco con questo nuovo.</p>
+<blockquote>
+<p>Se capita che il nuovo valore è uguale al precedente, potete scegliere se sostituire il valore nuovo o lasciare quello vecchio, in entrambi i casi si calcola il percorso minimo. In generale comunque, consiglio di lasciare il valore vecchio in modo da dover fare meno cancellazioni e modifiche!</p>
+</blockquote>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-5.png">
+</p>
+<p>Ripeto l'iterazione, il nuovo nodo più basso è <code>D</code>, lo blocco e calcolo i nodi vicini.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-6.png">
+</p>
+<p>Ci siamo quasi...blocco <code>B</code> e vado avanti.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-7.png">
+</p>
+<p>A questo punto avrei calcolato un valore del nodo di destinazione, ma <em>continuo comunque</em> finché non blocco tutti i nodi.</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-8.png">
+</p>
+<p class="centered">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/dijkstra-9.png">
+</p>
+<p>Bene, ho finito!! Ho calcolato che il costo per arrivare al server di FIFA è 10 ed il percorso è <code>FIFA-&gt;E-&gt;C-&gt;A-&gt;My Home</code>.</p>
+<p>Notare che, una volta svolto l'algoritmo per un nodo, ho automaticamente il costo della distanza di <em>tutti</em> i nodi. Notare inoltre che questa distanza è sempre quella <em>ottimale</em>, ovvero sono certo che la distanza e il percorso sono quelli a costo minore fra tutti quelli possibili.</p>
+<p>Prima di concludere, copio in una la tabella il riepilogo di quanto calcolato finora.</p>
+<table><thead><tr><th align="center">Nodo</th><th align="center">Distanza da MyHome</th><th align="center">Nodo precedente</th></tr></thead><tbody>
+<tr><td align="center">MyHome</td><td align="center">0</td><td align="center"></td></tr>
+<tr><td align="center">A</td><td align="center">2</td><td align="center">MyHome</td></tr>
+<tr><td align="center">B</td><td align="center">8</td><td align="center">A</td></tr>
+<tr><td align="center">C</td><td align="center">4</td><td align="center">B</td></tr>
+<tr><td align="center">D</td><td align="center">6</td><td align="center">C</td></tr>
+<tr><td align="center">E</td><td align="center">9</td><td align="center">C</td></tr>
+<tr><td align="center">Fifa</td><td align="center">10</td><td align="center">E</td></tr>
+</tbody></table>
+<p>Come si può vedere, ogni nodo ha sempre <em>uno ed un solo</em> nodo di provenienza. Può capitare però, senza nessun problema, che un nodo possa avere <em>in ingresso</em> più di una freccia. Significa semplicemente che quel nodo è un passaggio per più percorsi.</p>
+<h3><a class="header" href="#metodo-alternativo" id="metodo-alternativo">Metodo alternativo</a></h3>
+<p>Se preferite, è possibile usare la tabella fin dall'inizio. In questo caso, dovete compilarla di pari passo con i passaggi dell'algoritmo, e aggiornarla man mano che procedete con le iterazioni. Vi consiglio di usare <a href="https://www.cs.usfca.edu/%7Egalles/visualization/Dijkstra.html">questo</a> sito per esercitarvi con questo metodo.</p>
+<p>Entrambi i metodi sono validi e, ovviamente, portano allo stesso risultato. Provateli entrambi e decidete qual'è il migliore per voi.</p>
+<blockquote>
+<p>Al compito in classe potrete usare il metodo che preferite.</p>
+</blockquote>
+<!-- da aggiungere: cenni al Link State Protocol di OSPF -->
+<h2><a class="header" href="#esercizi-di-preparazione-al-compito-1" id="esercizi-di-preparazione-al-compito-1">Esercizi di preparazione al compito</a></h2>
+<p>Calcolare le tabelle dei costi dei seguenti grafi:</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/d02.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/d03.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/d04.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/d05.png">
+</p>
+<p class="centered img-container">
+<img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="03-routing/assets/d06.png">
+</p>
 
                     </main>
 

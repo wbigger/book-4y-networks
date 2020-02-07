@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html" class="active"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.1.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html"><strong aria-hidden="true">4.2.</strong> OSPF</a></li></ol></li><li class="expanded "><a href="../04-transport/00-README.html"><strong aria-hidden="true">5.</strong> Transport Layer</a></li><li><ol class="section"><li class="expanded "><a href="../04-transport/01-nat-pat.html"><strong aria-hidden="true">5.1.</strong> NAT&amp;PAT</a></li></ol></li></ol>
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Benvenuti</a></li><li class="expanded "><a href="../01-switch/index.html"><strong aria-hidden="true">2.</strong> Data Link</a></li><li class="expanded "><a href="../02-network/00-README.html"><strong aria-hidden="true">3.</strong> Basi di Networking</a></li><li><ol class="section"><li class="expanded "><a href="../02-network/01-0-ip-mask.html"><strong aria-hidden="true">3.1.</strong> IP &amp; maschere</a></li><li class="expanded "><a href="../02-network/01-1-class-classless.html"><strong aria-hidden="true">3.2.</strong> Classless &amp; classful</a></li><li class="expanded "><a href="../02-network/02-icann.html"><strong aria-hidden="true">3.3.</strong> ICANN</a></li><li class="expanded "><a href="../02-network/03-addressing.html"><strong aria-hidden="true">3.4.</strong> Indirizzamento</a></li><li class="expanded "><a href="../02-network/04-net-bc.html" class="active"><strong aria-hidden="true">3.5.</strong> IP rete &amp; broadcast</a></li></ol></li><li class="expanded "><a href="../03-routing/00-README.html"><strong aria-hidden="true">4.</strong> Routing</a></li><li><ol class="section"><li class="expanded "><a href="../03-routing/00-recap.html"><strong aria-hidden="true">4.1.</strong> Riepilogo LAN</a></li><li class="expanded "><a href="../03-routing/01-wan.html"><strong aria-hidden="true">4.2.</strong> WAN</a></li><li class="expanded "><a href="../03-routing/02-ospf.html"><strong aria-hidden="true">4.3.</strong> OSPF</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -200,7 +200,7 @@ Ipotizziamo di avere gli host con gli IP nella prima colonna, nelle altre due ci
 </tbody></table>
 <p>Ora siamo pronti a calcolare indirizzo IP della rete e broadcast.</p>
 <h3><a class="header" href="#indirizzo-di-rete" id="indirizzo-di-rete">Indirizzo di rete</a></h3>
-<p>Per l'indirizzo di rete,dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
+<p>Per l'indirizzo di rete, dobbiamo fare l'operazione logica <code>AND</code> tra l'indirizzo IP.</p>
 <p>La tabella di verità per l'operatore logico <code>AND</code> è il seguente:</p>
 <table><thead><tr><th>A</th><th align="center">B</th><th align="center">A and B</th></tr></thead><tbody>
 <tr><td>0</td><td align="center">0</td><td align="center">0</td></tr>
@@ -230,11 +230,11 @@ IP di rete: 192.168.7.48
 <p class="centered">
 2 ^ (32-28) = 2 ^ 4 = 16
 </p>
-<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete nel conto):</p>
+<p>Quindi sommando l'indirizzo di rete al numero di host e sottraendo uno (in quanto devo contare anche l'IP di rete di partenza):</p>
 <p class="centered">
-(192.168.7.48 + 16 - 1) = 192.168.7.63
+192.168.7.48 + 16 - 1 = 192.168.7.63
 </p>
-<p>Quindi l'indirizzo di broadcast è:</p>
+<p>Da cui l'indirizzo di broadcast:</p>
 <p class="centered">
 <strong>
 IP di broadcast: 192.168.7.63
@@ -254,7 +254,7 @@ IP di broadcast: 192.168.7.63
 <table><thead><tr><th>Subnet mask</th><th align="center">NOT Subnet mask</th></tr></thead><tbody>
 <tr><td>11111111 11111111 11111111 11110000</td><td align="center">00000000 00000000 00000000 00001111</td></tr>
 </tbody></table>
-<p>Effettuiamo ora l'operazione.</p>
+<p>Effettuiamo ora l'operazione <code>OR</code> tra l'indirizzo IP di partenza ed il valore negato della maschera di sottorete.</p>
 <table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td>11000000 10101000 00000111 00110111</td><td>OR</td></tr>
 <tr><td>00000000 00000000 00000000 00001111</td><td>=</td></tr>
@@ -267,9 +267,9 @@ IP di broadcast: 192.168.7.63
 IP di broadcast: 192.168.7.63
 </strong>
 </p>
-<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o al valore della maschera di sottorete.</p>
-<h2><a class="header" href="#esercizi-di-preparazione" id="esercizi-di-preparazione">Esercizi di preparazione</a></h2>
-<p>Per prepararsi al compito, calcolare indirizzo IP di rete e di broadcast per i seguenti casi.</p>
+<p>Che ovviamente è lo stesso indirizzo calcolato in precedenza con l'altro metodo. Ognuno può usare il metodo che preferisce, in base alle proprie attitudini o esperienze.</p>
+<h2><a class="header" href="#esercizi-di-preparazione-al-compito" id="esercizi-di-preparazione-al-compito">Esercizi di preparazione al compito</a></h2>
+<p>Per prepararsi al compito, Riempire la seguente tabella.</p>
 <table><thead><tr><th>IP/subnet</th><th align="center">IP rete</th><th align="right">IP broadcast</th></tr></thead><tbody>
 <tr><td>192.168.0.122/24</td><td align="center"></td><td align="right"></td></tr>
 <tr><td>192.168.0.122/26</td><td align="center"></td><td align="right"></td></tr>
