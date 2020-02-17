@@ -17,7 +17,7 @@ Per la spiegazione di seguito potete anche usare [questo grafo interattivo](http
 
 Questo algoritmo arriva alla distanza ottimale calcolando tutto l'albero dei cammini minimi tra un nodo e l'altro. I percorsi tra i nodi possono avere pesi differenti: il cammino minimo sarà quello la cui somma di tutti i percorsi ha il valore minore.
 
-Ipotizziamo il seguente grafo. In questi grafi, nella realtà ad ogni nodo corrisponde un server.
+Ipotizziamo il seguente grafo. In questi grafi, nella realtà ad ogni nodo corrisponde un router.
 
 <p class="centered">
 <img class="centered w100p" title="Dijkstra" alt="Dijkstra" src="assets/dijkstra-1.png">
